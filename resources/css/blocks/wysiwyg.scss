@@ -1,0 +1,85 @@
+.wysiwyg {
+	.__txt {
+		p {
+			margin-bottom: 16px;
+		}
+
+		p:last-child {
+			margin-bottom: 0 !important;
+		}
+
+		ul {
+			margin-top: 8px;
+			margin-bottom: 24px;
+			padding-left: 20px;
+			list-style: disc;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			li {
+				margin-bottom: 8px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+		h4, h5, h6 {
+			margin-top: 16px;
+			margin-bottom: 8px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.wysiwyg.smaller-header {
+	h4 {
+		font-size:28px !important;
+		line-height: 2rem;
+	}
+}
+
+.wysiwyg.list {
+
+		h4, h5, h6 {
+			margin-top: 0;
+			margin-bottom: 0;
+
+		}
+
+    ul {
+      margin-top: 8px;
+      margin-bottom: 24px;
+      list-style: none;
+      padding-left: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      li {
+        position: relative;
+        margin-bottom: 0.5em;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &::before {
+          content: url('/wp-content/uploads/2026/01/double-arrow.svg');
+		  position: relative;
+          left: 0;
+          top: -3px;
+          width: 14px;
+          height: 14px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+}

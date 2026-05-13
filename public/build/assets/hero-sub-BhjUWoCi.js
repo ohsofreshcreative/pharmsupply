@@ -1,0 +1,1 @@
+(function(){document.querySelectorAll(`.js-hero-sub-next`).forEach(function(e){e.addEventListener(`click`,function(t){t.preventDefault();var n=e.closest(`.b-hero-sub`);if(n){for(var r=n.nextElementSibling;r&&r.offsetHeight===0;)r=r.nextElementSibling;r&&r.scrollIntoView({behavior:`smooth`,block:`start`})}})})})();

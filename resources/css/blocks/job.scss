@@ -1,0 +1,111 @@
+.b-job {
+	.__txt {
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: var(--color-primary);
+			margin-bottom: 16px;
+			display: inline-block;
+		}
+
+		p {
+			margin-bottom: 16px;
+		}
+
+		p:last-child {
+			margin-bottom: 0 !important;
+		}
+
+		strong {
+			color:var(--color-primary);
+		}
+
+		ul {
+			margin-top: 8px;
+			margin-bottom: 24px;
+			list-style: none;
+			padding-left: 0;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			li {
+				position: relative;
+				margin-bottom: 0.5em;
+				display: flex;
+				gap: 8px;
+				align-items: top;
+
+				&::before {
+					content: url('/wp-content/uploads/2026/01/double-arrow.svg');
+					position: relative;
+					left: 0;
+					top: 2px;
+					width: 14px;
+					height: 14px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+			}
+		}
+	}
+
+	.__form {
+		.wpcf7 form .wpcf7-response-output {
+			color: var(--body);
+			width: max-content;
+		}
+
+
+		.codedropz-upload-handler {
+			border:none !important;
+			h6 {
+				display: flex;
+				flex-direction: column;
+			}
+
+			h6::before {
+				content: url('/wp-content/uploads/2026/02/upload.svg');
+				margin-bottom: 8px;
+			}
+		}
+
+		.codedropz-upload-container {
+			margin-top: 16px;
+			border: 2px dashed var(--color-primary);
+			border-radius: 8px;
+			background-color: #fff;
+			padding: 40px;
+		}
+
+		.dnd-upload-counter {
+			display: none;
+		}
+
+		.cd-upload-btn {
+			text-decoration: underline !important;
+		}
+	}
+}
+
+/*--- CUSTOM BLOCK ---*/
+.b-job.__inbound {
+	.__content {
+		margin-top: 40px;
+		margin-bottom: 104px;
+	}
+
+	.__form {
+		margin-top: 32px !important;
+	}
+
+	.__sidebar {
+		display: none;
+	}
+}
