@@ -1459,11 +1459,6 @@
           "color": "#fff"
         },
         {
-          "name": "Body",
-          "slug": "body",
-          "color": "rgb(var(--body))"
-        },
-        {
           "name": "Primary",
           "slug": "primary",
           "color": "rgb(var(--primary))"
@@ -1472,11 +1467,6 @@
           "name": "Primary (Hover)",
           "slug": "primary-hover",
           "color": "rgb(var(--p-hover))"
-        },
-        {
-          "name": "Primary (50)",
-          "slug": "primary-50",
-          "color": "rgb(var(--p-50))"
         },
         {
           "name": "Primary (100)",
@@ -1504,24 +1494,9 @@
           "color": "rgb(var(--p-500))"
         },
         {
-          "name": "Primary (600)",
-          "slug": "primary-600",
-          "color": "rgb(var(--p-600))"
-        },
-        {
           "name": "Primary (700)",
           "slug": "primary-700",
           "color": "rgb(var(--p-700))"
-        },
-        {
-          "name": "Primary (800)",
-          "slug": "primary-800",
-          "color": "rgb(var(--p-800))"
-        },
-        {
-          "name": "Primary (Dark)",
-          "slug": "primary-dark",
-          "color": "rgb(var(--p-dark))"
         },
         {
           "name": "Secondary",
@@ -1559,24 +1534,9 @@
           "color": "rgb(var(--s-600))"
         },
         {
-          "name": "Secondary (700)",
-          "slug": "secondary-700",
-          "color": "rgb(var(--s-700))"
-        },
-        {
-          "name": "Secondary (900)",
-          "slug": "secondary-900",
-          "color": "rgb(var(--s-900))"
-        },
-        {
           "name": "Secondary (Dark)",
           "slug": "secondary-dark",
           "color": "rgb(var(--s-dark))"
-        },
-        {
-          "name": "Gray",
-          "slug": "gray",
-          "color": "var(--gray)"
         },
         {
           "name": "Action",
@@ -1597,11 +1557,6 @@
           "name": "Primary (Lighter)",
           "slug": "primary-lighter",
           "color": "var(--color-primary-100)"
-        },
-        {
-          "name": "Secondary (Light)",
-          "slug": "secondary-light",
-          "color": "var(--color-secondary-300)"
         },
         {
           "name": "Secondary (Lighter)",

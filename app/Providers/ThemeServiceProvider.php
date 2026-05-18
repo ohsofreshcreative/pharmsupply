@@ -37,14 +37,6 @@ class ThemeServiceProvider extends SageServiceProvider
 					'capability' => 'edit_posts',
 					'redirect'   => false,
 				]);
-
-				acf_add_options_page([
-					'page_title' => 'Wezwanie do działania',
-					'menu_title' => 'Wezwanie do działania',
-					'menu_slug'  => 'bottom',
-					'capability' => 'edit_posts',
-					'redirect'   => false,
-				]);
 			}
 		});
 	}

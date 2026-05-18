@@ -5,11 +5,11 @@ namespace App\Fields;
 use Log1x\AcfComposer\Field;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Bottom extends Field
+class Connect extends Field
 {
 	public $name = 'Wezwanie do działania';
-	public $description = 'Bottom';
-	public $slug = 'bottom';
+	public $description = 'Connect';
+	public $slug = 'connect';
 	public $category = 'formatting';
 	public $icon = 'email';
 	public $keywords = ['formularz', 'zdjecie'];
@@ -22,13 +22,13 @@ class Bottom extends Field
 
 	public function fields(): array
 	{
-		$bottom = new FieldsBuilder('bottom');
+		$connect = new FieldsBuilder('connect');
 
-		$bottom
-			->setLocation('options_page', '==', 'bottom') // ważne!
+		$connect
+			->setLocation('options_page', '==', 'connect')
 			/*--- FIELDS ---*/
 			->addTab('Treść', ['placement' => 'top'])
-			->addGroup('bottom', ['label' => ''])
+			->addGroup('connect', ['label' => ''])
 			->addImage('image', [
 				'label' => 'Obraz',
 				'return_format' => 'array', // lub 'url', lub 'id'
@@ -69,6 +69,6 @@ class Bottom extends Field
 			]);
 
 
-		return [$bottom];
+		return [$connect];
 	}
 }
