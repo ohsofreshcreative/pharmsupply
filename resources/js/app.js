@@ -9,32 +9,17 @@ import.meta.glob(['../images/**', '../fonts/**']);
 // Twoje niestandardowe moduły JS
 import './menubar.js';
 import './footer-accordion.js';
-import './megamenu.js';
-import './blocks/hero.js'; 
 
 /*--- USED ---*/
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('.b-help')) import('./blocks/help');
-  if (document.querySelector('.b-team')) import('./blocks/team');
-  if (document.querySelector('.b-speakers')) import('./blocks/speakers');
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
-  if (document.querySelector('.b-places')) import('./blocks/places');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
-  if (document.querySelector('.b-cantors')) import('./blocks/cantors');
-  if (document.querySelector('.b-slides')) import('./blocks/slides');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
   if (document.querySelector('.b-hero-sub')) import('./blocks/hero-sub');
-  if (document.querySelector('.b-currency-rates')) import('./blocks/currency-rates');
 });
 
 /*--- NOT USED ---*/
-import './blocks/works.js';
-import './blocks/category-posts.js';
-import './blocks/how.js';
-import './blocks/overlap.js';
-import './blocks/calc.js';
-import './blocks/category-slider.js';
 
 /*--- INICJALIZACJA BIBLIOTEK ---*/
 // Uruchom Alpine.js

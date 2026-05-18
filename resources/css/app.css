@@ -11,43 +11,61 @@
   --body: 42 63 80; /* #2A3F50 */
 
 /* PRIMARY (lewa kolumna – granat) */
---primary: 5 7 54; /* #050736 */
+--primary: 0 87 155; /* #00579B */
 --p-hover: 4 6 45; /* #04062D */
 
---p-50: 189 191 237; /* #BDBFED */
---p-100: 152 155 205; /* #989BCD */
---p-200: 112 115 178; /* #7073B2 */
---p-300: 65 68 130;   /* #414482 */
---p-400: 39 41 101;   /* #272965 */
---p-500: 5 7 54;      /* #050736 */
---p-600: 4 6 45;      /* #04062D */
---p-700: 3 5 36;      /* #030524 */
---p-800: 3 4 27;      /* #03041B */
---p-900: 2 2 18;      /* #020212 */
---p-dark: 1 1 11;     /* #01010B */
+/* PRIMARY (niebieski) */
+--p-50: 176 214 243;  /* #B0D6F3 */
+--p-100: 138 190 230; /* #8ABEE6 */
+--p-200: 94 157 207;  /* #5E9DCF */
+--p-300: 57 135 195;  /* #3987C3 */
+--p-400: 23 107 172;  /* #176BAC */
+--p-500: 0 87 155;    /* #00579B */
+--p-600: 0 73 129;    /* #004981 */
+--p-700: 0 58 103;    /* #003A67 */
+--p-800: 0 44 78;     /* #002C4E */
+--p-900: 0 29 52;     /* #001D34 */
+--p-dark: 0 17 31;    /* #00111F */
 
---action: rgb(5, 7, 54);
+--action: rgb(0, 87, 155);
 
 
-/* SECONDARY (prawa kolumna – brąz) */
---secondary: 192 120 87; /* #C07857 */
---s-hover: 160 100 73;   /* #A06449 */
+/* SECONDARY (turkusowy) */
+--secondary: 0 192 197; /* #00C0C5 */
+--s-hover: 0 160 164;   /* #00A0A4 */
 
---s-50: 242 228 221; /* #F2E4DD */
---s-100: 234 210 199; /* #EAD2C7 */
---s-200: 224 188 171; /* #E0BCAB */
---s-300: 213 165 143; /* #D5A58F */
---s-400: 203 143 115; /* #CB8F73 */
---s-500: 192 120 87;  /* #C07857 */
---s-600: 160 100 73;  /* #A06449 */
---s-700: 128 80 58;   /* #80503A */
---s-800: 96 60 44;    /* #603C2C */
---s-900: 64 40 29;    /* #40281D */
---s-dark: 38 24 17;   /* #261811 */
+--s-50: 171 244 246;  /* #ABF4F6 */
+--s-100: 137 238 241; /* #89EEF1 */
+--s-200: 99 224 228;  /* #63E0E4 */
+--s-300: 59 222 226;  /* #3BDEE2 */
+--s-400: 22 211 216;  /* #16D3D8 */
+--s-500: 0 192 197;   /* #00C0C5 */
+--s-600: 0 160 164;   /* #00A0A4 */
+--s-700: 0 128 131;   /* #008083 */
+--s-800: 0 96 99;     /* #006063 */
+--s-900: 0 64 66;     /* #004042 */
+--s-dark: 0 38 39;    /* #002627 */
+
+
+/* THIRD (różowy/fioletowy) */
+--third: 248 129 240; /* #F881F0 */
+--t-hover: 207 108 200; /* #CF6CC8 */
+
+--t-50: 254 230 252;  /* #FEE6FC */
+--t-100: 253 213 250; /* #FDD5FA */
+--t-200: 252 192 248; /* #FCC0F8 */
+--t-300: 250 171 245; /* #FAABF5 */
+--t-400: 249 150 243; /* #F996F3 */
+--t-500: 248 129 240; /* #F881F0 */
+--t-600: 207 108 200; /* #CF6CC8 */
+--t-700: 165 86 160;  /* #A556A0 */
+--t-800: 124 65 120;  /* #7C4178 */
+--t-900: 83 43 80;    /* #532B50 */
+--t-dark: 50 26 48;   /* #321A30 */
 
   /* neutrals / fixed backgrounds */
   --gray: #2a3f50;
-  --bg: #FFF9F2;
+  --bg: #F4F9FF;
   --bg-light: #F7EEE5;
   --bg-lighter: #E9F8F3;
   --bg-brand: #002704;
@@ -87,6 +105,20 @@
   --color-secondary-900: rgb(var(--s-900));
   --color-secondary-dark: rgb(var(--s-dark));
 
+  /* third */
+  --color-third: rgb(var(--third));
+  --color-third-hover: rgb(var(--t-hover));
+  --color-third-100: rgb(var(--t-100));
+  --color-third-200: rgb(var(--t-200));
+  --color-third-300: rgb(var(--t-300));
+  --color-third-400: rgb(var(--t-400));
+  --color-third-500: rgb(var(--t-500));
+  --color-third-600: rgb(var(--t-600));
+  --color-third-700: rgb(var(--t-700));
+  --color-third-800: rgb(var(--t-800));
+  --color-third-900: rgb(var(--t-900));
+  --color-third-dark: rgb(var(--t-dark));
+
   --color-gray: var(--gray);
   --color-action: var(--action);
 
@@ -117,89 +149,21 @@
 
 /*-- USED ---*/
 @import '../css/blocks/hero.scss';
-/*--- currency-rates ---*/
-@import '../css/blocks/tabs.scss';
-@import '../css/blocks/about.scss';
-@import '../css/blocks/category-posts.scss';
-@import '../css/blocks/places.scss';
-@import '../css/blocks/cantors.scss';
-@import '../css/blocks/cards.scss';
-@import '../css/blocks/content.scss';
-
-/*-- NOT USED --*/
-@import '../css/blocks/help.scss';
-@import '../css/blocks/cta-bg.scss';
-@import '../css/blocks/tiles.scss';
-@import '../css/blocks/team.scss';
-@import '../css/blocks/offer.scss';
-@import '../css/blocks/reviews.scss';
-@import '../css/blocks/connect.scss';
-@import '../css/blocks/hero-about.scss';
-@import '../css/blocks/who.scss';
-@import '../css/blocks/numbers.scss';
-@import '../css/blocks/member.scss';
-@import '../css/blocks/hero-offer.scss';
-@import '../css/blocks/proces.scss';
-@import '../css/blocks/faq.scss';
-@import '../css/blocks/hero-help.scss';
-@import '../css/blocks/overlap.scss';
-@import '../css/blocks/contact.scss';
-@import '../css/blocks/wehelp.scss';
-@import '../css/blocks/prices.scss';
-@import '../css/blocks/image.scss';
-@import '../css/blocks/cta.scss';
-@import '../css/blocks/resources.scss';
-@import '../css/blocks/mats.scss';
-@import '../css/blocks/jobs.scss';
-@import '../css/blocks/hero-blog.scss';
-@import '../css/blocks/ebook.scss';
-@import '../css/blocks/slider.scss';
-@import '../css/blocks/block-clone.scss';
-@import '../css/blocks/speakers.scss';
-@import '../css/blocks/triple.scss';
-@import '../css/blocks/boxes.scss';
-@import '../css/blocks/product.scss';
-@import '../css/blocks/voucher.scss';
+/*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';
-
-@import '../css/blocks/complex.scss';
-@import '../css/blocks/works.scss';
+@import '../css/blocks/cards.scss';
+@import '../css/blocks/category-posts.scss';
+@import '../css/blocks/contact.scss';
+@import '../css/blocks/content.scss';
+@import '../css/blocks/cta-bg.scss';
+@import '../css/blocks/faq.scss';
 @import '../css/blocks/hero-sub.scss';
-@import '../css/blocks/hero-brand.scss';
-@import '../css/blocks/how.scss';
-@import '../css/blocks/quote.scss';
-@import '../css/blocks/services.scss';
-@import '../css/blocks/twin.scss';
-@import '../css/blocks/order.scss';
-@import '../css/blocks/gains.scss';
-@import '../css/blocks/overlap.scss';
-@import '../css/blocks/what.scss';
-@import '../css/blocks/connect.scss';
-@import '../css/blocks/gallery.scss';
-@import '../css/blocks/calc.scss';
-@import '../css/blocks/tlc.scss';
-@import '../css/blocks/categories.scss';
-@import '../css/blocks/bottom-block.scss';
-@import '../css/blocks/hero-cat.scss';
-@import '../css/blocks/hero-job.scss';
-@import '../css/blocks/selection.scss';
-@import '../css/blocks/product-hero.scss';
-@import '../css/blocks/sectors.scss';
-@import '../css/blocks/steps.scss';
-@import '../css/blocks/values.scss';
-@import '../css/blocks/cert.scss';
-@import '../css/blocks/catalogues.scss';
-@import '../css/blocks/job.scss';
-@import '../css/blocks/map.scss';
+@import '../css/blocks/image.scss';
 @import '../css/blocks/logos.scss';
-@import '../css/blocks/locations.scss';
-@import '../css/blocks/categories.scss';
-@import '../css/blocks/area-block.scss';
-@import '../css/blocks/cases.scss';
-@import '../css/blocks/history.scss';
-@import '../css/blocks/cases-slider.scss';
-@import '../css/blocks/path.scss';
-@import '../css/blocks/duotitle.scss';
-@import '../css/blocks/inspirations.scss';
+@import '../css/blocks/numbers.scss';
+@import '../css/blocks/overlap.scss';
+@import '../css/blocks/proces.scss';
+@import '../css/blocks/reviews.scss';
+@import '../css/blocks/slider.scss';
+@import '../css/blocks/tabs.scss';
 @import '../css/blocks/wysiwyg.scss';
-@import '../css/blocks/coop.scss';

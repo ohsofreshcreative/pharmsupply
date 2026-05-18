@@ -8,8 +8,6 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 class Accordion extends Block
 
 {
-
-
 	public $name = 'Rozwijane panele';
 	public $description = 'accordion';
 	public $slug = 'accordion';
