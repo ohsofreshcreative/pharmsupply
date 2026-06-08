@@ -17,6 +17,6 @@
 		</p>
 	</div>
 
-	<img class="__bg absolute -left-100 -top-100 pointer-events-none" src="http://pharmsupply.local/wp-content/uploads/2026/05/glow_footer.svg" />
-	<img class="__bg absolute -top-80 -right-80 pointer-events-none" src="http://pharmsupply.local/wp-content/uploads/2026/05/shape_footer.svg" />
+	<img class="__bg absolute -left-100 -top-100 pointer-events-none" src="/wp-content/uploads/2026/05/glow_footer.svg" />
+	<img class="__bg absolute -top-80 -right-80 pointer-events-none" src="/wp-content/uploads/2026/05/shape_footer.svg" />
 </footer>

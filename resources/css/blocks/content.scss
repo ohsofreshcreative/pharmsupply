@@ -1,8 +1,8 @@
 .b-content {
 	.__img {
 		img.mask-img {
-			-webkit-mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/intro-bg.svg');
-			mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/intro-bg.svg');
+			-webkit-mask-image: url('/wp-content/uploads/2026/05/intro-bg.svg');
+			mask-image: url('/wp-content/uploads/2026/05/intro-bg.svg');
 			-webkit-mask-repeat: no-repeat;
 			mask-repeat: no-repeat;
 			-webkit-mask-size: contain;
@@ -16,8 +16,8 @@
 	}
 
 	.__img.is-flipped {
-		-webkit-mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/intro-bg.svg');
-		mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/intro-bg.svg');
+		-webkit-mask-image: url('/wp-content/uploads/2026/05/intro-bg.svg');
+		mask-image: url('/wp-content/uploads/2026/05/intro-bg.svg');
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-size: contain;
@@ -72,7 +72,7 @@
 				padding-bottom: 0.5em;
 
 				&::before {
-					content: url('http://pharmsupply.local/wp-content/themes/pharmsupply/resources/images/check.svg');
+					content: url('/wp-content/themes/pharmsupply/resources/images/check.svg');
 					position: relative;
 					left: 0;
 					top: -5px;

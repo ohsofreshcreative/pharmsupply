@@ -15,13 +15,16 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BKBmhvZi.css",
+    "file": "assets/app-CNZKkt8W.css",
     "name": "app",
     "names": [
       "app.css"
     ],
     "src": "resources/css/app.css",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/check-CcolzIvH.svg"
+    ]
   },
   "resources/css/editor.css": {
     "file": "assets/editor-RNQK3EY4.css",
@@ -31,6 +34,10 @@
     ],
     "src": "resources/css/editor.css",
     "isEntry": true
+  },
+  "resources/images/check.svg": {
+    "file": "assets/check-CcolzIvH.svg",
+    "src": "resources/images/check.svg"
   },
   "resources/js/app.js": {
     "file": "assets/app-2GZucOyX.js",
