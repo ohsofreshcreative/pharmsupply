@@ -126,7 +126,7 @@ $unique_id = 'clip_'.uniqid();
 
 		<div data-gsap-element="img" class="__img h-full w-1/2 absolute right-0 bottom-0 pt-20">
 			<img src="{{ $connects['image']['url'] }}" alt="{{ $connects['image']['alt'] }}" class="mask-img w-full h-full object-cover relative z-10" />
-			<img class="absolute top-22 right-5 z-0" src="http://pharmsupply.local/wp-content/uploads/2026/05/shape.svg" />
+			<img class="absolute top-22 right-5 z-0" src="/wp-content/uploads/2026/05/shape.svg" />
 		</div>
 
 	</div>

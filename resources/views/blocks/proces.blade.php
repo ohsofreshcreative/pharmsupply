@@ -46,7 +46,7 @@
 					<p class="font-header text-h7 text-secondary-dark mt-4">{{ $item['title'] }}</p>
 					<div class="!text-[16px] mt-2">{!! $item['txt'] !!}</div>
 				</div>
-				<img class="absolute opacity-10 -top-45 -right-30 z-0" src="http://pharmsupply.local/wp-content/uploads/2026/05/card_shape.svg" alt="shape" />
+				<img class="absolute opacity-10 -top-45 -right-30 z-0" src="/wp-content/uploads/2026/05/card_shape.svg" alt="shape" />
 			</div>
 			@endforeach
 		</div>

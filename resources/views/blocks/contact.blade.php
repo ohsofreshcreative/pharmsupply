@@ -39,7 +39,7 @@
 
 				<div data-gsap-element="social" class="__social border-t border-primary-100/50 flex items-center gap-4 pt-6 mt-6">
 					<p class="text-white">Zobacz również</p>
-					<img src="http://pharmsupply.local/wp-content/uploads/2026/05/fb-1.svg" />
+					<img src="/wp-content/uploads/2026/05/fb-1.svg" />
 				</div>
 			</div>
 

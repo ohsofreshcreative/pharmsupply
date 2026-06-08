@@ -53,6 +53,6 @@ $qApp = $_GET['product_app'] ?? '';
 	{{-- Submit --}}
 	<button type="submit"
 		class="bg-secondary hover:bg-secondary-hover cursor-pointer text-white rounded-full flex items-center justify-center w-11 h-11">
-		<img src="http://pharmsupply.local/wp-content/uploads/2026/05/magnifier.svg" alt="Szukaj" class="w-5 h-5">
+		<img src="/wp-content/uploads/2026/05/magnifier.svg" alt="Szukaj" class="w-5 h-5">
 	</button>
 </form>

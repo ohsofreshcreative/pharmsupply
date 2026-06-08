@@ -21,7 +21,7 @@
             @endif
 
             @if (!empty($glow))
-            <img class="absolute top-0 -left-20 blur-[350px] opacity-15 w-full h-full z-0" src="http://pharmsupply.local/wp-content/uploads/2026/05/hero-shape.svg" />
+            <img class="absolute top-0 -left-20 blur-[350px] opacity-15 w-full h-full z-0" src="/wp-content/uploads/2026/05/hero-shape.svg" />
             @endif
 
             <img class="mask-img object-cover w-full h-full aspect-[3/2] radius-img relative z-10"

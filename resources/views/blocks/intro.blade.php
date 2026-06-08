@@ -45,7 +45,7 @@
 
 			<img src="{{ $g_intro['image']['url'] }}" alt="{{ $g_intro['image']['alt'] }}"
 				class="mask-img h-[680px] w-full object-cover" />
-			<img src="http://pharmsupply.local/wp-content/uploads/2026/05/intro-bg.svg" class="absolute top-8 -left-6 h-[504px] w-[504px] object-cover overflow-visible -z-10" />
+			<img src="/wp-content/uploads/2026/05/intro-bg.svg" class="absolute top-8 -left-6 h-[504px] w-[504px] object-cover overflow-visible -z-10" />
 		</div>
 	</div>
 

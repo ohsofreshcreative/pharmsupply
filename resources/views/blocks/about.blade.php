@@ -35,8 +35,8 @@
 		@if (!empty($g_about['image']))
 		<div data-gsap-element="img" class="__img h-full order1">
 			<img class="mask-img object-contain object-top-left w-full h-full aspect-[3/2] __img radius-img relative z-10" src="{{ $g_about['image']['url'] }}" alt="{{ $g_about['image']['alt'] ?? '' }}">
-			<img class="absolute top-0 -right-20 z-10" src="http://pharmsupply.local/wp-content/uploads/2026/05/shape-stroke.svg" />
-			<img class="absolute top-0 blur-[350px] opacity-60 w-full h-full z-0" src="http://pharmsupply.local/wp-content/uploads/2026/05/hero-shape.svg" />
+			<img class="absolute top-0 -right-20 z-10" src="/wp-content/uploads/2026/05/shape-stroke.svg" />
+			<img class="absolute top-0 blur-[350px] opacity-60 w-full h-full z-0" src="/wp-content/uploads/2026/05/hero-shape.svg" />
 		</div>
 		@endif
 

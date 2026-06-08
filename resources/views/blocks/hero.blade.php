@@ -45,7 +45,7 @@
 
 			<img src="{{ $g_hero['image']['url'] }}" alt="{{ $g_hero['image']['alt'] }}"
 				class="mask-img h-[600px] w-full object-cover" />
-			<img src="http://pharmsupply.local/wp-content/uploads/2026/05/hero-shape.svg" class="absolute top-0 left-1/8 h-[584px] w-[584px] object-cover overflow-visible -z-10" />
+			<img src="/wp-content/uploads/2026/05/hero-shape.svg" class="absolute top-0 left-1/8 h-[584px] w-[584px] object-cover overflow-visible -z-10" />
 		</div>
 	</div>
 
