@@ -1,0 +1,14 @@
+.b-connects {
+	img.mask-img {
+		-webkit-mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/footer-cta-shape.svg');
+		mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/footer-cta-shape.svg');
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-size: cover;
+		mask-size: cover;
+		-webkit-mask-position: left top;
+		mask-position: left top;
+		object-fit: cover;
+		/* max-width: 1000px; */
+	}
+}

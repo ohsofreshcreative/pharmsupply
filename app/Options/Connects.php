@@ -4,11 +4,11 @@ namespace App\Options;
 
 use Log1x\AcfComposer\Options;
 
-class Products extends Options
+class Connects extends Options
 {
-	public $name = 'Produkty';
-	public $slug = 'products';
-	public $title = 'Produkty';
+	public $name = 'Wezwanie do działania';
+	public $slug = 'connects';
+	public $title = 'Wezwanie do działania';
 	public $capability = 'edit_posts';
 	public $redirect = false;
 	public function fields(): array

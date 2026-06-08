@@ -4,6 +4,7 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
+use App\Support\SectionClasses;
 
 class Wysiwyg extends Block
 {
@@ -16,7 +17,7 @@ class Wysiwyg extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -62,6 +63,27 @@ class Wysiwyg extends Block
 			->addText('section_class', [
 				'label' => 'Dodatkowe klasy CSS',
 			])
+			->addText('bg_class', [
+				'label' => 'Dodatkowe klasy CSS dla tła',
+			])
+			->addTrueFalse('switch', [
+				'label' => 'Odwrócona maska',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('glow', [
+				'label' => 'Glow w tle',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('nolist', [
+				'label' => 'Brak punktatorów',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
 			->addTrueFalse('flip', [
 				'label' => 'Odwrotna kolejność',
 				'ui' => 1,
@@ -86,36 +108,48 @@ class Wysiwyg extends Block
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
 			])
-			->addSelect('bg', [
-				'label' => 'Tło sekcji',
+			->addSelect('background', [
+				'label' => 'Kolor tła',
 				'choices' => [
-					'x' => '— brak —',
-					'light' => 'Jasne tło',
-					'gray' => 'Szare tło',
-					'white' => 'Białe tło',
-					'brand' => 'Tło marki',
-					'dark' => 'Ciemne tło',
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-secondary' => 'Jasne - Alternatywne',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
 				],
-				'default_value' => '',
-				'allow_null'    => 0,
-				'multiple'      => 0,
-				'ui'            => 1,
+				'default_value' => 'none',
+				'ui' => 0, // Ulepszony interfejs
+				'allow_null' => 0,
 			]);
 
 		return $wysiwyg;
 	}
 
-	public function with()
+	public function with(): array
 	{
-		return [
+		$fields = [
 			'g_wysiwyg' => get_field('g_wysiwyg'),
+
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-			'flip' => get_field('flip'),
-			'wide' => get_field('wide'),
-			'nomt' => get_field('nomt'),
-			'gap' => get_field('gap'),
-			'bg' => get_field('bg'),
+
+			'flip' => (bool) get_field('flip'),
+			'wide' => (bool) get_field('wide'),
+			'nomt' => (bool) get_field('nomt'),
+			'gap' => (bool) get_field('gap'),
+
+			'background' => get_field('background') ?: 'none',
 		];
+
+		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
+			'flip' => 'order-flip',
+			'wide' => 'wide',
+			'nomt' => '!mt-0',
+			'gap' => 'wider-gap',
+		]);
+
+		return $fields;
 	}
 }

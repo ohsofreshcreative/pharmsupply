@@ -1,0 +1,36 @@
+.b-reachus {
+
+	.__phone {
+		display: flex;
+	}
+
+	.__phone::before {
+		content: '';
+		background-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/phone.svg');
+		background-size: cover;
+		margin-right: 16px;
+		position: relative;
+		max-width: 40px;
+		background-color: #FFF;
+		border-radius: 100%;
+		height: 32px;
+		width: 32px;
+	}
+
+	.__mail {
+		display: flex;
+	}
+
+	.__mail::before {
+		content: '';
+		background-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/mail.svg');
+		background-size: cover;
+		margin-right: 16px;
+		position: relative;
+		max-width: 40px;
+		background-color: #FFF;
+		border-radius: 100%;
+		height: 32px;
+		width: 32px;
+	}
+}

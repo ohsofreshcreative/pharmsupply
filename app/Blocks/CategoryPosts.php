@@ -4,6 +4,7 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
+use App\Support\SectionClasses;
 
 class CategoryPosts extends Block
 {
@@ -16,7 +17,7 @@ class CategoryPosts extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -25,7 +26,7 @@ class CategoryPosts extends Block
 		$categoryPosts = new FieldsBuilder('category-posts');
 
 		$categoryPosts
-			->setLocation('block', '==', 'acf/category-posts') // ważne!
+			->setLocation('block', '==', 'acf/category-posts')
 			->addText('block-title', [
 				'label' => 'Tytuł bloku',
 				'required' => 0,
@@ -35,22 +36,18 @@ class CategoryPosts extends Block
 				'open' => true,
 				'multi_expand' => true,
 			])
-			/*--- FIELDS ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('posts_settings', ['label' => ''])
-
 			->addText('title', ['label' => 'Tytuł'])
 			->addTextarea('text', [
 				'label' => 'Opis',
 				'rows' => 2,
 				'new_lines' => 'br',
 			])
-
 			->addLink('button', [
 				'label' => 'Przycisk',
 				'return_format' => 'array',
 			])
-
 			->addTrueFalse('show_image', [
 				'label' => 'Pokaż obrazek',
 				'default_value' => 1,
@@ -58,7 +55,6 @@ class CategoryPosts extends Block
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
 			])
-
 			->addTrueFalse('show_excerpt', [
 				'label' => 'Pokaż fragment treści',
 				'default_value' => 0,
@@ -66,18 +62,11 @@ class CategoryPosts extends Block
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
 			])
-
 			->endGroup()
 
-			/*--- USTAWIENIA BLOKU ---*/
-
 			->addTab('Ustawienia bloku', ['placement' => 'top'])
-			->addText('section_id', [
-				'label' => 'ID',
-			])
-			->addText('section_class', [
-				'label' => 'Dodatkowe klasy CSS',
-			])
+			->addText('section_id', ['label' => 'ID'])
+			->addText('section_class', ['label' => 'Dodatkowe klasy CSS'])
 			->addTrueFalse('flip', [
 				'label' => 'Odwrotna kolejność',
 				'ui' => 1,
@@ -102,29 +91,20 @@ class CategoryPosts extends Block
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
 			])
-			->addTrueFalse('lightbg', [
-				'label' => 'Jasne tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('graybg', [
-				'label' => 'Szare tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('whitebg', [
-				'label' => 'Białe tło',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addTrueFalse('brandbg', [
-				'label' => 'Tło marki',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
+			->addSelect('background', [
+				'label' => 'Kolor tła',
+				'choices' => [
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-secondary' => 'Jasne - Alternatywne',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
+				],
+				'default_value' => 'none',
+				'ui' => 0,
+				'allow_null' => 0,
 			]);
 
 		return $categoryPosts;
@@ -133,36 +113,41 @@ class CategoryPosts extends Block
 	public function with()
 	{
 		$posts_settings = get_field('posts_settings');
-		$show_image = $posts_settings['show_image'] ?? true;
-		$show_excerpt = $posts_settings['show_excerpt'] ?? false;
+		$show_image     = $posts_settings['show_image'] ?? true;
+		$show_excerpt   = $posts_settings['show_excerpt'] ?? false;
 
-		// Get posts from the selected category
-		$args = [
-			'post_type' => 'post',
+		$query = new \WP_Query([
+			'post_type'      => 'post',
 			'posts_per_page' => 6,
-			'post_status' => 'publish',
-			'orderby' => 'date',
-			'order' => 'DESC',
-		];
+			'post_status'    => 'publish',
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+		]);
 
-		$query = new \WP_Query($args);
-		$posts = $query->posts;
+		$fields = [
+			'posts_settings' => $posts_settings,
+			'posts'          => $query->posts,
+			'show_image'     => $show_image,
+			'show_excerpt'   => $show_excerpt,
 
-		return [
-			'posts_settings' => get_field('posts_settings'),
-			'posts' => $posts,
-			'show_image' => $show_image,
-			'show_excerpt' => $show_excerpt,
-			'section_id' => get_field('section_id'),
+			'section_id'    => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-			'flip' => get_field('flip'),
-			'wide' => get_field('wide'),
-			'nomt' => get_field('nomt'),
-			'gap' => get_field('gap'),
-			'lightbg' => get_field('lightbg'),
-			'graybg' => get_field('graybg'),
-			'whitebg' => get_field('whitebg'),
-			'brandbg' => get_field('brandbg'),
+
+			'flip' => (bool) get_field('flip'),
+			'wide' => (bool) get_field('wide'),
+			'nomt' => (bool) get_field('nomt'),
+			'gap'  => (bool) get_field('gap'),
+
+			'background' => get_field('background') ?: 'none',
 		];
+
+		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
+			'flip' => 'order-flip',
+			'wide' => 'wide',
+			'nomt' => '!mt-0',
+			'gap'  => 'wider-gap',
+		]);
+
+		return $fields;
 	}
 }

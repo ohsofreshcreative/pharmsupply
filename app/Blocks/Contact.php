@@ -18,7 +18,7 @@ class Contact extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -50,20 +50,11 @@ class Contact extends Block
 			->addText('mail', [
 				'label' => 'Adres e-mail',
 			])
-			->addTextarea('address1', [
+			->addWysiwyg('adress1', [
 				'label' => 'Adres #1',
-				'rows' => 3,
-				'new_lines' => 'br',
-			])
-			->addTextarea('address2', [
-				'label' => 'Adres #2',
-				'rows' => 3,
-				'new_lines' => 'br',
-			])
-			->addTextarea('hours', [
-				'label' => 'Godziny pracy recepcji',
-				'rows' => 2,
-				'new_lines' => 'br',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
 			])
 			->addImage('image', [
 				'label' => 'Obraz w tle',
@@ -120,7 +111,7 @@ class Contact extends Block
 					'none' => 'Brak (domyślne)',
 					'section-white' => 'Białe',
 					'section-light' => 'Jasne',
-					'section-gray' => 'Szare',
+					'section-secondary' => 'Jasne - Alternatywne',
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',

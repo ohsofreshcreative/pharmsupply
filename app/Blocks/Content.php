@@ -8,7 +8,7 @@ use App\Support\SectionClasses;
 
 class Content extends Block
 {
-	public $name = 'Tekst oraz zdjęcie';
+	public $name = 'Treść oraz zdjęcie';
 	public $description = 'content';
 	public $slug = 'content';
 	public $category = 'formatting';
@@ -17,7 +17,7 @@ class Content extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -34,7 +34,7 @@ class Content extends Block
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Tekst oraz zdjęcie',
+				'label' => 'Treść oraz zdjęcie',
 				'open' => false,
 				'multi_expand' => true,
 			])
@@ -57,20 +57,11 @@ class Content extends Block
 				'label' => 'Przycisk',
 				'return_format' => 'array',
 			])
-			->addTrueFalse('hint', [
-				'label' => 'Dodaj dymek',
-				'ui' => 1,
-				'ui_on_text' => 'Tak',
-				'ui_off_text' => 'Nie',
-			])
-			->addImage('image_hint', [
-				'label' => 'Obraz',
+			->addImage('bg', [
+				'label' => 'Grafika w tle',
 				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
-			->conditional('hint', '==', '1')
-			->addText('header_hint', ['label' => 'Nagłówek'])
-			->conditional('hint', '==', '1')
 			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/
@@ -81,6 +72,21 @@ class Content extends Block
 			])
 			->addText('section_class', [
 				'label' => 'Dodatkowe klasy CSS',
+			])
+			->addText('bg_class', [
+				'label' => 'Dodatkowe klasy CSS dla tła',
+			])
+			->addTrueFalse('switch', [
+				'label' => 'Odwrócona maska',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('glow', [
+				'label' => 'Glow w tle',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
 			])
 			->addTrueFalse('nolist', [
 				'label' => 'Brak punktatorów',
@@ -118,7 +124,7 @@ class Content extends Block
 					'none' => 'Brak (domyślne)',
 					'section-white' => 'Białe',
 					'section-light' => 'Jasne',
-					'section-gray' => 'Szare',
+					'section-secondary' => 'Jasne - Alternatywne',
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',
@@ -138,7 +144,10 @@ class Content extends Block
 
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
+			'bg_class' => get_field('bg_class'),
 
+			'switch' => (bool) get_field('switch'),
+			'glow' => (bool) get_field('glow'),
 			'flip' => (bool) get_field('flip'),
 			'wide' => (bool) get_field('wide'),
 			'nomt' => (bool) get_field('nomt'),

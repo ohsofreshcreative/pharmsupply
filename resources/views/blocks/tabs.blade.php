@@ -13,7 +13,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 <!--- tabs --->
 
 <section data-gsap-anim="section" @if($id) id="{{ $id }}" @endif class="b-tabs -smt {{ $sectionClass }} {{ $class }}">
-	<div class="c-wide bg-white radius section-py">
+	<div class="__wrapper c-wide bg-white radius section-py">
 		<div class="c-main">
 			<div class="w-full md:w-1/2 m-auto text-center">
 				<h2 data-gsap-element="header">{{ $g_tabs['title'] ?? '' }}</h2>

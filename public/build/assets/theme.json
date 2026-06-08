@@ -1459,6 +1459,11 @@
           "color": "#fff"
         },
         {
+          "name": "Body",
+          "slug": "body",
+          "color": "rgb(var(--body))"
+        },
+        {
           "name": "Primary",
           "slug": "primary",
           "color": "rgb(var(--primary))"
@@ -1467,6 +1472,11 @@
           "name": "Primary (Hover)",
           "slug": "primary-hover",
           "color": "rgb(var(--p-hover))"
+        },
+        {
+          "name": "Primary (50)",
+          "slug": "primary-50",
+          "color": "rgb(var(--p-50))"
         },
         {
           "name": "Primary (100)",
@@ -1494,11 +1504,6 @@
           "color": "rgb(var(--p-500))"
         },
         {
-          "name": "Primary (700)",
-          "slug": "primary-700",
-          "color": "rgb(var(--p-700))"
-        },
-        {
           "name": "Secondary",
           "slug": "secondary",
           "color": "rgb(var(--secondary))"
@@ -1509,19 +1514,14 @@
           "color": "rgb(var(--s-hover))"
         },
         {
+          "name": "Secondary (50)",
+          "slug": "secondary-50",
+          "color": "rgb(var(--s-50))"
+        },
+        {
           "name": "Secondary (100)",
           "slug": "secondary-100",
           "color": "rgb(var(--s-100))"
-        },
-        {
-          "name": "Secondary (200)",
-          "slug": "secondary-200",
-          "color": "rgb(var(--s-200))"
-        },
-        {
-          "name": "Secondary (300)",
-          "slug": "secondary-300",
-          "color": "rgb(var(--s-300))"
         },
         {
           "name": "Secondary (500)",
@@ -1539,9 +1539,14 @@
           "color": "rgb(var(--s-dark))"
         },
         {
-          "name": "Action",
-          "slug": "action",
-          "color": "var(--action)"
+          "name": "Third (50)",
+          "slug": "third-50",
+          "color": "rgb(var(--t-50))"
+        },
+        {
+          "name": "Third (100)",
+          "slug": "third-100",
+          "color": "rgb(var(--t-100))"
         },
         {
           "name": "Background (Brand)",
@@ -1551,17 +1556,22 @@
         {
           "name": "Primary (Light)",
           "slug": "primary-light",
-          "color": "var(--color-primary-300)"
+          "color": "var(--color-primary-100)"
         },
         {
           "name": "Primary (Lighter)",
           "slug": "primary-lighter",
-          "color": "var(--color-primary-100)"
+          "color": "var(--color-primary-50)"
+        },
+        {
+          "name": "Secondary (Light)",
+          "slug": "secondary-light",
+          "color": "var(--color-secondary-100)"
         },
         {
           "name": "Secondary (Lighter)",
           "slug": "secondary-lighter",
-          "color": "var(--color-secondary-100)"
+          "color": "var(--color-secondary-50)"
         }
       ]
     },

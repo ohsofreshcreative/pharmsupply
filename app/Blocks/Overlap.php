@@ -17,7 +17,7 @@ class Overlap extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -122,7 +122,7 @@ class Overlap extends Block
 					'none' => 'Brak (domyślne)',
 					'section-white' => 'Białe',
 					'section-light' => 'Jasne',
-					'section-gray' => 'Szare',
+					'section-secondary' => 'Jasne - Alternatywne',
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',

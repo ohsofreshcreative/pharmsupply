@@ -49,3 +49,45 @@ add_filter('woocommerce_coming_soon_template', function ($template) {
     
     return $template;
 });
+
+
+add_action('pre_get_posts', function ($q) {
+    if (is_admin() || ! $q->is_main_query()) {
+        return;
+    }
+    if (! $q->is_post_type_archive('product')) {
+        return;
+    }
+
+    // Nazwa produktu (LIKE po tytule)
+    if (! empty($_GET['product_s'])) {
+        $q->set('s', sanitize_text_field(wp_unslash($_GET['product_s'])));
+    }
+
+    // Taksonomie
+    $tax_query = [];
+
+    if (! empty($_GET['product_cat'])) {
+        $tax_query[] = [
+            'taxonomy' => 'product_category',
+            'field'    => 'slug',
+            'terms'    => sanitize_title(wp_unslash($_GET['product_cat'])),
+        ];
+    }
+
+    if (! empty($_GET['product_app'])) {
+        $tax_query[] = [
+            'taxonomy' => 'product_application',
+            'field'    => 'slug',
+            'terms'    => sanitize_title(wp_unslash($_GET['product_app'])),
+        ];
+    }
+
+    if (count($tax_query) > 1) {
+        $tax_query['relation'] = 'AND';
+    }
+
+    if (! empty($tax_query)) {
+        $q->set('tax_query', $tax_query);
+    }
+});

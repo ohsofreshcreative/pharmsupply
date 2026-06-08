@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
-use App\Blocks\ExampleBlock;
 
 class ThemeServiceProvider extends SageServiceProvider
 {

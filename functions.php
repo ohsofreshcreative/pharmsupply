@@ -101,6 +101,4 @@ collect(['setup', 'filters', 'post-types'])
 
 /*--- PROJECT BLOCKS ---*/
 
-add_filter('sage/acf-composer/fields', fn() => [
-	App\Blocks\ExampleBlock::class,
-]);
+

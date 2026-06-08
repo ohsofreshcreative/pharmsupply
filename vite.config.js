@@ -9,19 +9,19 @@ import path from 'path'
 
 export default defineConfig(({ command }) => ({
   server: {
-    host: 'multiserwis.local',
+    host: 'pharmsupply.local',
     port: 5981,
     strictPort: true,
     cors: true,
     hmr: {
       protocol: 'ws',
-      host: 'multiserwis.local',
+      host: 'pharmsupply.local',
       port: 5981,
     },
   },
 
   base: command === 'build'
-    ? '/wp-content/themes/multiserwis/public/build/'
+    ? '/wp-content/themes/pharmsupply/public/build/'
     : '/build/',
 
   plugins: [

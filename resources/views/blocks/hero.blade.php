@@ -14,7 +14,7 @@
 			<h1 data-gsap-element="header" class="text-gradient m-header">
 				{{ $g_hero['title'] }}
 			</h1>
-			<div data-gsap-element="txt" class="text-lg">
+			<div data-gsap-element="txt" class="">
 				{!! $g_hero['txt'] !!}
 			</div>
 

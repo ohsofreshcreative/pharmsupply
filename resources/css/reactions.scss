@@ -1,0 +1,232 @@
+
+
+.adverse-form h1 {
+  margin: 0 0 56px;
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: 0.95;
+  font-weight: 800;
+  color: #00639c;
+  letter-spacing: -0.04em;
+}
+
+.adverse-section {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 80px;
+  padding: 56px 0;
+  border-bottom: 1px solid rgba(0, 99, 156, 0.25);
+}
+
+.adverse-section:first-of-type {
+  padding-top: 0;
+}
+
+.adverse-section-side h2 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 800;
+  color: #071827;
+}
+
+.adverse-section-content h3 {
+  margin: 0 0 40px;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #071827;
+}
+
+.adverse-grid {
+  display: grid;
+  gap: 28px 32px;
+}
+
+.adverse-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.adverse-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.adverse-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.adverse-field-full {
+  grid-column: 1 / -1;
+}
+
+.adverse-field label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #00639c;
+}
+
+.adverse-field input[type="text"],
+.adverse-field input[type="email"],
+.adverse-field input[type="tel"],
+.adverse-field select,
+.adverse-field textarea {
+  width: 100%;
+  min-height: 66px;
+  padding: 16px 20px;
+  border: 3px solid #00639c;
+  border-radius: 10px;
+  background: transparent;
+  color: #102033;
+  font-size: 20px;
+  line-height: 1.4;
+  outline: none;
+  box-shadow: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.adverse-field textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.adverse-field input:focus,
+.adverse-field select:focus,
+.adverse-field textarea:focus {
+  border-color: #0088c7;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.adverse-help {
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: rgba(16, 32, 51, 0.65);
+}
+
+.adverse-field .wpcf7-form-control.wpcf7-radio {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.adverse-field .wpcf7-list-item {
+  margin: 0;
+  display: block;
+}
+
+.adverse-field .wpcf7-list-item label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  color: #102033;
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.adverse-field input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  margin: 0;
+  border: 3px solid #00639c;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  top: 1px;
+}
+
+.adverse-field input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #00639c;
+}
+
+.adverse-submit {
+  padding-top: 48px;
+  text-align: right;
+}
+
+.adverse-submit input[type="submit"] {
+  min-height: 62px;
+  padding: 16px 42px;
+  border: 3px solid #00639c;
+  border-radius: 999px;
+  background: #00639c;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.adverse-submit input[type="submit"]:hover {
+  background: transparent;
+  color: #00639c;
+}
+
+.wpcf7-not-valid-tip {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.wpcf7-response-output {
+  margin: 32px 0 0 !important;
+  padding: 16px 20px !important;
+  border-radius: 8px;
+}
+
+
+/* Responsywność */
+@media (max-width: 1200px) {
+  .adverse-form {
+    padding: 56px 40px;
+  }
+
+  .adverse-section {
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+  }
+
+  .adverse-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .adverse-form {
+    padding: 48px 24px;
+  }
+
+  .adverse-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 44px 0;
+  }
+
+  .adverse-grid-2,
+  .adverse-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .adverse-form h1 {
+    margin-bottom: 40px;
+  }
+
+  .adverse-section-side h2 {
+    font-size: 24px;
+  }
+
+  .adverse-section-content h3 {
+    font-size: 28px;
+  }
+}

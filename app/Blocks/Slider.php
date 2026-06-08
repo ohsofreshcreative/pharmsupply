@@ -4,143 +4,170 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
+use App\Support\SectionClasses;
 
 class Slider extends Block
 {
-    public $name = 'Slider - Standard';
-    public $description = 'slider';
-    public $slug = 'slider';
-    public $category = 'formatting';
-    public $icon = 'image-flip-horizontal';
-    public $keywords = ['slider', 'kafelki'];
-    public $mode = 'edit';
-    public $supports = [
-        'align' => false,
-        'mode' => false,
-        'jsx' => true,
-    ];
+	public $name = 'Slider';
+	public $description = 'slider - slider z produktami';
+	public $slug = 'slider';
+	public $category = 'formatting';
+	public $icon = 'admin-users';
+	public $keywords = ['slider', 'kafelki', 'produkty'];
+	public $mode = 'edit';
+	public $supports = [
+		'align' => false,
+		'mode' => true,
+		'jsx' => true,
+		'anchor' => true,
+		'customClassName' => true,
+	];
 
-    public function fields()
-    {
-        $slider = new FieldsBuilder('slider');
+	public function fields()
+	{
+		$slider = new FieldsBuilder('slider');
 
-        $slider
-            ->setLocation('block', '==', 'acf/slider') // ważne!
-            ->addText('block-title', [
-                'label' => 'Tytuł',
-                'required' => 0,
-            ])
-            ->addAccordion('accordion1', [
-                'label' => 'Slider - Kafelki',
-                'open' => false,
-                'multi_expand' => true,
-            ])
-            /*--- FIELDS ---*/
-            ->addTab('Treści', ['placement' => 'top'])
-            ->addGroup('g_slider', ['label' => ''])
+		$slider
+			->setLocation('block', '==', 'acf/slider')
+			->addText('block-title', [
+				'label' => 'Tytuł',
+				'required' => 0,
+			])
+			->addAccordion('accordion1', [
+				'label' => 'Produkty - Slider',
+				'open' => false,
+				'multi_expand' => true,
+			])
+			/*--- FIELDS ---*/
+			->addTab('Treści', ['placement' => 'top'])
+			->addGroup('g_slider', ['label' => ''])
+			->addText('header', ['label' => 'Nagłówek'])
+			->addWysiwyg('content', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
+			->endGroup()
 
-            ->addText('title', ['label' => 'Tytuł'])
+			->addTaxonomy('slider_categories', [
+				'label'        => 'Filtruj produkty po kategoriach',
+				'taxonomy'     => 'product_category',
+				'field_type'   => 'checkbox',
+				'return_format' => 'id',
+				'multiple'     => 1,
+				'add_term'     => 0,
+				'load_terms'   => 0,
+				'save_terms'   => 0,
+				'allow_null'   => 1,
+			])
 
-            ->addRepeater('r_slider', [
-                'label' => 'Slider',
-                'layout' => 'table', // 'row', 'block', albo 'table'
-                'min' => 1,
-                'max' => 10,
-                'button_label' => 'Dodaj kafelek'
-            ])
-            ->addImage('image', [
-                'label' => 'Zdjęcie - tło',
-                'return_format' => 'array', // lub 'url', lub 'id'
-                'preview_size' => 'thumbnail',
-            ])
-            ->addImage('icon', [
-                'label' => 'Ikonka',
-                'return_format' => 'array',
-                'preview_size' => 'thumbnail',
-            ])
-            ->addText('header', [
-                'label' => 'Nagłówek',
-            ])
-            ->addTextarea('opis', [
-                'label' => 'Opis',
-                'rows' => 4,
-                'new_lines' => 'br',
-            ])
-            ->endRepeater()
+			/*--- USTAWIENIA BLOKU ---*/
 
-            ->endGroup()
+			->addTab('Ustawienia bloku', ['placement' => 'top'])
+			->addText('section_id', [
+				'label' => 'ID',
+			])
+			->addText('section_class', [
+				'label' => 'Dodatkowe klasy CSS',
+			])
+			->addTrueFalse('nolist', [
+				'label' => 'Brak punktatorów',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('flip', [
+				'label' => 'Odwrotna kolejność',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('wide', [
+				'label' => 'Szeroka kolumna',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('nomt', [
+				'label' => 'Usunięcie marginesu górnego',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('gap', [
+				'label' => 'Większy odstęp',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addSelect('background', [
+				'label' => 'Kolor tła',
+				'choices' => [
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-secondary' => 'Jasne - Alternatywne',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
+				],
+				'default_value' => 'none',
+				'ui' => 0, // Ulepszony interfejs
+				'allow_null' => 0,
+			]);
 
-            /*--- USTAWIENIA BLOKU ---*/
+		return $slider;
+	}
 
-            ->addTab('Ustawienia bloku', ['placement' => 'top'])
-            ->addText('section_id', [
-                'label' => 'ID',
-            ])
-            ->addText('section_class', [
-                'label' => 'Dodatkowe klasy CSS',
-            ])
-            ->addTrueFalse('nolist', [
-                'label' => 'Brak punktatorów',
-                'ui' => 1,
-                'ui_on_text' => 'Tak',
-                'ui_off_text' => 'Nie',
-            ])
-            ->addTrueFalse('flip', [
-                'label' => 'Odwrotna kolejność',
-                'ui' => 1,
-                'ui_on_text' => 'Tak',
-                'ui_off_text' => 'Nie',
-            ])
-            ->addTrueFalse('wide', [
-                'label' => 'Szeroka kolumna',
-                'ui' => 1,
-                'ui_on_text' => 'Tak',
-                'ui_off_text' => 'Nie',
-            ])
-            ->addTrueFalse('nomt', [
-                'label' => 'Usunięcie marginesu górnego',
-                'ui' => 1,
-                'ui_on_text' => 'Tak',
-                'ui_off_text' => 'Nie',
-            ])
-            ->addTrueFalse('gap', [
-                'label' => 'Większy odstęp',
-                'ui' => 1,
-                'ui_on_text' => 'Tak',
-                'ui_off_text' => 'Nie',
-            ])
-            ->addSelect('background', [
-                'label' => 'Kolor tła',
-                'choices' => [
-                    'none' => 'Brak (domyślne)',
-                    'section-white' => 'Białe',
-                    'section-light' => 'Jasne',
-                    'section-gray' => 'Szare',
-                    'section-brand' => 'Marki',
-                    'section-gradient' => 'Gradient',
-                    'section-dark' => 'Ciemne',
-                ],
-                'default_value' => 'none',
-                'ui' => 0, // Ulepszony interfejs
-                'allow_null' => 0,
-            ]);
+	public function with(): array
+	{
+		$fields = [
+			'slider_posts' => $this->slider_posts(),
 
-        return $slider;
-    }
+			'g_slider' => get_field('g_slider'),
+			'slider_categories'   => get_field('slider_categories'),
+			'section_id' => get_field('section_id'),
+			'section_class' => get_field('section_class'),
+			'nolist' => (bool) get_field('nolist'),
+			'flip' => (bool) get_field('flip'),
+			'wide' => (bool) get_field('wide'),
+			'nomt' => (bool) get_field('nomt'),
+			'gap' => (bool) get_field('gap'),
+			'background' => get_field('background') ?: 'none',
+		];
 
-    public function with()
-    {
-        return [
-            'g_slider' => get_field('g_slider'),
-            'slider' => get_field('g_slider')['r_slider'] ?? [],
-            'section_id' => get_field('section_id'),
-            'section_class' => get_field('section_class'),
-            'nolist' => get_field('nolist'),
-            'flip' => get_field('flip'),
-            'wide' => get_field('wide'),
-            'nomt' => get_field('nomt'),
-            'gap' => get_field('gap'),
-            'background' => get_field('background'),
-        ];
-    }
+		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
+			'nolist' => 'nolist',
+			'flip' => 'order-flip',
+			'wide' => 'wide',
+			'nomt' => '!mt-0',
+			'gap' => 'wider-gap',
+		]);
+
+		return $fields;
+	}
+
+	public function slider_posts()
+	{
+		$selected_categories = get_field('slider_categories');
+
+		$args = [
+			'post_type'      => 'product',
+			'posts_per_page' => -1,
+			'orderby'        => 'menu_order date',
+			'order'          => 'ASC',
+			'post_status'    => 'publish',
+		];
+
+		if (!empty($selected_categories)) {
+			$args['tax_query'] = [[
+				'taxonomy' => 'product_category',
+				'field'    => 'term_id',
+				'terms'    => (array) $selected_categories,
+			]];
+		}
+
+		return get_posts($args);
+	}
 }

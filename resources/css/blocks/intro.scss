@@ -1,0 +1,17 @@
+.b-intro {
+	.__img {
+		img.mask-img {
+			-webkit-mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/intro-shape.svg');
+			mask-image: url('http://pharmsupply.local/wp-content/uploads/2026/05/intro-shape.svg');
+			-webkit-mask-repeat: no-repeat;
+			mask-repeat: no-repeat;
+			-webkit-mask-size: contain;
+			mask-size: contain;
+			-webkit-mask-position: center;
+			mask-position: center;
+			width: 680px;
+			height: 680px;
+			object-fit: cover;
+		}
+	}
+}

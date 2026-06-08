@@ -53,3 +53,135 @@ add_action('init', function () {
 		'rewrite'      => ['slug' => 'kategoria-produktu', 'with_front' => false],
 	]);
 });
+
+add_filter('manage_edit-product_columns', function ($columns) {
+    $newColumns = [];
+
+    foreach ($columns as $key => $label) {
+        if ($key === 'cb') {
+            $newColumns[$key] = $label;
+            $newColumns['product_thumb'] = 'Zdjęcie';
+            continue;
+        }
+
+        $newColumns[$key] = $label;
+    }
+
+    return $newColumns;
+});
+
+add_action('manage_product_posts_custom_column', function ($column, $post_id) {
+    if ($column !== 'product_thumb') {
+        return;
+    }
+
+    if (has_post_thumbnail($post_id)) {
+        echo get_the_post_thumbnail($post_id, [60, 60], [
+            'style' => 'width:60px;height:60px;object-fit:contain;border-radius:8px;',
+        ]);
+        return;
+    }
+
+    echo '—';
+}, 10, 2);
+
+add_action('admin_head', function () {
+    $screen = get_current_screen();
+
+    if (!$screen || $screen->id !== 'edit-product') {
+        return;
+    }
+    ?>
+    <style>
+        .wp-list-table .column-product_thumb {
+            width: 72px;
+        }
+
+        .wp-list-table td.column-product_thumb,
+        .wp-list-table th.column-product_thumb {
+            padding-left: 8px;
+            padding-right: 8px;
+            text-align: center;
+        }
+    </style>
+    <?php
+});
+
+add_action('init', function () {
+	$product_attributes = [
+		'product_application' => [
+			'label' => 'Zastosowania',
+			'singular' => 'Zastosowanie',
+			'menu' => 'Zastosowanie',
+			'slug' => 'zastosowanie-produktu',
+		],
+		'product_regulatory_status' => [
+			'label' => 'Statusy regulacyjne produktu',
+			'singular' => 'Status regulacyjny produktu',
+			'menu' => 'Status regulacyjny',
+			'slug' => 'status-regulacyjny-produktu',
+		],
+		'product_form' => [
+			'label' => 'Postacie produktu',
+			'singular' => 'Postać produktu',
+			'menu' => 'Postać',
+			'slug' => 'postac-produktu',
+		],
+		'product_packaging' => [
+			'label' => 'Opakowania produktu',
+			'singular' => 'Opakowanie produktu',
+			'menu' => 'Opakowanie',
+			'slug' => 'opakowanie-produktu',
+		],
+	];
+
+	foreach ($product_attributes as $taxonomy => $attribute) {
+		register_taxonomy($taxonomy, ['product'], [
+			'label'             => $attribute['label'],
+			'labels'            => [
+				'name'                       => $attribute['label'],
+				'singular_name'              => $attribute['singular'],
+				'search_items'               => 'Szukaj',
+				'all_items'                  => 'Wszystkie',
+				'edit_item'                  => 'Edytuj',
+				'update_item'                => 'Aktualizuj',
+				'add_new_item'               => 'Dodaj nową pozycję',
+				'new_item_name'              => 'Nazwa nowej pozycji',
+				'separate_items_with_commas' => 'Oddziel przecinkami',
+				'add_or_remove_items'        => 'Dodaj lub usuń pozycje',
+				'choose_from_most_used'      => 'Wybierz z najczęściej używanych',
+				'not_found'                  => 'Nie znaleziono',
+				'menu_name'                  => $attribute['menu'],
+			],
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_admin_column' => true,
+			'show_in_rest'      => true,
+			'rewrite'           => ['slug' => $attribute['slug'], 'with_front' => false],
+		]);
+	}
+});
+
+add_action('save_post_product', function ($post_id, $post, $update) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (wp_is_post_revision($post_id)) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    $term_ids = wp_get_post_terms($post_id, 'product_application', [
+        'fields' => 'ids',
+    ]);
+
+    if (is_wp_error($term_ids) || count($term_ids) <= 1) {
+        return;
+    }
+
+    wp_set_post_terms($post_id, [(int) $term_ids[0]], 'product_application', false);
+}, 20, 3);

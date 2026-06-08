@@ -16,7 +16,7 @@ class Cards extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -69,6 +69,10 @@ class Cards extends Block
 			->addTextarea('text', [
 				'label' => 'Opis',
 			])
+			->addLink('button', [
+				'label' => 'Przycisk',
+				'return_format' => 'array',
+			])
 			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
@@ -110,7 +114,7 @@ class Cards extends Block
                     'none' => 'Brak (domyślne)',
                     'section-white' => 'Białe',
                     'section-light' => 'Jasne',
-                    'section-gray' => 'Szare',
+                    'section-secondary' => 'Jasne - Alternatywne',
                     'section-brand' => 'Marki',
                     'section-gradient' => 'Gradient',
                     'section-dark' => 'Ciemne',
