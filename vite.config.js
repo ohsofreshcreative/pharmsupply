@@ -1,64 +1,67 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import laravel from 'laravel-vite-plugin'
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin'
-// --- POCZĄTEK ZMIANY ---
-// Importujemy moduł 'path' z Node.js, aby stworzyć absolutną ścieżkę
 import path from 'path'
-// --- KONIEC ZMIANY ---
 
-export default defineConfig(({ command }) => ({
-  server: {
-    host: 'pharmsupply.local',
-    port: 5981,
-    strictPort: true,
-    cors: true,
-    hmr: {
-      protocol: 'ws',
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const wpOrigin = env.WP_HOME || 'http://pharmsupply.local'
+
+  return {
+    server: {
       host: 'pharmsupply.local',
       port: 5981,
+      strictPort: true,
+      cors: true,
+      proxy: {
+        '/wp-content/uploads': {
+          target: wpOrigin,
+          changeOrigin: true,
+        },
+      },
+      hmr: {
+        protocol: 'ws',
+        host: 'pharmsupply.local',
+        port: 5981,
+      },
     },
-  },
 
-  base: command === 'build'
-    ? '/wp-content/themes/pharmsupply/public/build/'
-    : '/build/',
+    base: command === 'build'
+      ? '/wp-content/themes/pharmsupply/public/build/'
+      : '/build/',
 
-  plugins: [
-    // --- POCZĄTEK ZMIANY ---
-    // Zmuszamy wtyczkę Tailwind do użycia konkretnego pliku konfiguracyjnego
-    tailwindcss({
-      config: path.resolve(__dirname, 'tailwind.config.js'),
-    }),
-    // --- KONIEC ZMIANY ---
+    plugins: [
+      tailwindcss({
+        config: path.resolve(__dirname, 'tailwind.config.js'),
+      }),
 
-    laravel({
-      input: [
-        'resources/css/app.css',
-        'resources/js/app.js',
-        'resources/css/editor.css',
-        'resources/js/editor.js',
-		
-      ],
-      refresh: true,
-    }),
+      laravel({
+        input: [
+          'resources/css/app.css',
+          'resources/js/app.js',
+          'resources/css/editor.css',
+          'resources/js/editor.js',
+        ],
+        refresh: true,
+      }),
 
-    wordpressPlugin(),
+      wordpressPlugin(),
 
-    // Upraszczamy tę wtyczkę, usuwając ustawienia kolorów, które nie działały
-    wordpressThemeJson({
-      disableTailwindColors: false,
-      disableTailwindFonts: false,
-      disableTailwindFontSizes: false,
-    }),
-  ],
+      wordpressThemeJson({
+        disableTailwindColors: false,
+        disableTailwindFonts: false,
+        disableTailwindFontSizes: false,
+      }),
+    ],
 
-  resolve: {
-    alias: {
-      '@scripts': '/resources/js',
-      '@styles': '/resources/css',
-      '@fonts': '/resources/fonts',
-      '@images': '/resources/images',
+    resolve: {
+      alias: {
+        '@scripts': '/resources/js',
+        '@styles': '/resources/css',
+        '@fonts': '/resources/fonts',
+        '@images': '/resources/images',
+      },
     },
-  },
-}))
+  }
+})

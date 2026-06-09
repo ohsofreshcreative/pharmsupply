@@ -70,14 +70,14 @@ use App\Walkers\MobileDropdownWalker;
 		x-transition:leave="transition ease-in duration-150"
 		x-transition:leave-start="opacity-100 transform translate-x-0"
 		x-transition:leave-end="opacity-0 transform translate-x-full"
-		class="mobile-menu fixed top-0 right-0 bottom-0 w-full h-full bg-primary shadow-xl z-[51] overflow-y-auto md:hidden"
+		class="mobile-menu fixed top-0 right-0 bottom-0 w-full h-full bg-white shadow-xl z-[51] overflow-y-auto md:hidden"
 		aria-label="Menu mobilne">
 		<div class="p-4 relative z-10">
 			<div class="flex items-center justify-between mb-6">
 				<span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12"></a></span>
 				<button
 					@click="mobileOpen = false"
-					class="p-2 text-white rounded-md">
+					class="p-2 text-primary rounded-md">
 					<span class="sr-only">Zamknij menu</span>
 					<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />

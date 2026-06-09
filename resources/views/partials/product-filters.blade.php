@@ -9,10 +9,10 @@ $qApp = $_GET['product_app'] ?? '';
 @endphp
 
 <form method="get" action="{{ $action }}"
-	class="b-product-filters bg-white rounded-full b-shadow flex flex-col md:flex-row items-center overflow-hidden w-max pl-6 pr-4 mx-auto">
+	class="b-product-filters bg-white rounded-3xl lg:rounded-full b-shadow flex flex-col lg:flex-row items-center gap-2 lg:gap-0 overflow-hidden w-full py-6 lg:py-0 pl-6 pr-4 mx-auto">
 
 	{{-- Nazwa produktu --}}
-	<div class="flex-1 px-6 py-3 md:border-r border-gray-200">
+	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
 		<label for="product_s" class="block font-semibold text-xl">
 			Nazwa produktu
 		</label>
@@ -23,7 +23,7 @@ $qApp = $_GET['product_app'] ?? '';
 	</div>
 
 	{{-- Rodzaj produktu --}}
-	<div class="flex-1 px-6 py-3 md:border-r border-gray-200">
+	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
 		<label for="product_cat" class="block font-semibold text-xl">
 			Rodzaj produktu
 		</label>
@@ -37,8 +37,8 @@ $qApp = $_GET['product_app'] ?? '';
 	</div>
 
 	{{-- Zastosowanie --}}
-	<div class="flex-1 px-6 py-3">
-		<label for="product_app" class="block font-semibold text-xl">
+	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0">
+		<label for="product_app" class="block font-semibold text-xl ">
 			Zastosowanie
 		</label>
 		<select id="product_app" name="product_app"
@@ -52,7 +52,8 @@ $qApp = $_GET['product_app'] ?? '';
 
 	{{-- Submit --}}
 	<button type="submit"
-		class="bg-secondary hover:bg-secondary-hover cursor-pointer text-white rounded-full flex items-center justify-center w-11 h-11">
-		<img src="/wp-content/uploads/2026/05/magnifier.svg" alt="Szukaj" class="w-5 h-5">
+		class="bg-secondary hover:bg-secondary-hover cursor-pointer text-white rounded-full flex items-center justify-center gap-4 lg:gap-0 w-full lg:w-11 h-11">
+		<img src="/wp-content/uploads/2026/05/magnifier.svg" alt="Szukaj" class="w-5 h-5 w-max">
+		<p class="visible lg:hidden">Szukaj</p>
 	</button>
 </form>

@@ -5,12 +5,12 @@
 			border: 1px solid var(--color-primary-100);
 		}
 		.__card:nth-child(2) {
-			background-color: var(--color-secondary-50);
-			border: 1px solid var(--color-secondary-100);
-		}
-		.__card:nth-child(3) {
 			background-color: var(--color-third-50);
 			border: 1px solid var(--color-third-100);
+		}
+		.__card:nth-child(3) {
+			background-color: #F7EFE7;
+			border: 1px solid #FBD8B1;
 		}
 	}
 }

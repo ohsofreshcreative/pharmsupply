@@ -3,7 +3,7 @@
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	@class([ 'b-hero relative -spt overflow-visible' ,
+	@class([ 'b-hero relative pt-8 md:pt-26 overflow-visible' ,
 	$sectionClass=> filled($sectionClass),
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
@@ -49,6 +49,6 @@
 		</div>
 	</div>
 
-	<img src="/wp-content/uploads/2026/05/top-bg.svg" class="absolute -bottom-1/3 left-1/2 -translate-x-1/2 object-cover overflow-visible" />
+	<img src="/wp-content/uploads/2026/05/top-bg.svg" class="absolute -top-1/4 md:-bottom-1/3 left-1/2 -translate-x-1/2 object-cover overflow-visible" />
 
 </section>

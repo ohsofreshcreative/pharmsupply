@@ -13,16 +13,16 @@ $imageClass = ($hasImage1 && $hasImage2) ? 'img-l' : 'img-xl';
 
 <section @if($sectionId) id="{{ $sectionId }}" @endif class="b-image mt-10 {{ $customClass }} {{ $sectionClass }} {{ !empty($section_class) ? $section_class : '' }}">
 
-    <div class="__wrapper grid {{ $gridClass }} items-center gap-8">
+	<div class="__wrapper grid {{ $gridClass }} items-center gap-8">
 
-        @if ($hasImage1)
-        <img data-gsap-element="image" class="object-cover radius-img w-full __img {{ $imageClass }} order1" src="{{ $g_image['image']['url'] }}" alt="{{ $g_image['image']['alt'] ?? '' }}">
-        @endif
+		@if ($hasImage1)
+		<img data-gsap-element="image" class="object-cover radius-img w-full __img {{ $imageClass }} order1" src="{{ $g_image['image']['url'] }}" alt="{{ $g_image['image']['alt'] ?? '' }}">
+		@endif
 
-        @if ($hasImage2)
-        <img data-gsap-element="image" class="object-cover radius-img w-full __img {{ $imageClass }} order1" src="{{ $g_image['image2']['url'] }}" alt="{{ $g_image['image2']['alt'] ?? '' }}">
-        @endif
+		@if ($hasImage2)
+		<img data-gsap-element="image" class="object-cover radius-img w-full __img {{ $imageClass }} order1" src="{{ $g_image['image2']['url'] }}" alt="{{ $g_image['image2']['alt'] ?? '' }}">
+		@endif
 
-    </div>
+	</div>
 
 </section>

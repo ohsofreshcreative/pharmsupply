@@ -31,16 +31,20 @@ $sectionClass .= ' ' . $background;
 
 		<div class="grid {{ $gridClass }} gap-8 mt-8">
 			@foreach ($r_cards as $item)
-			<a href="{{ $item['button']['url'] }}" data-gsap-element="card" class="__card relative bg-secondary radius p-8">
-				@if (!empty($item['image']['url']))
-				<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
-				@endif
-				@if (!empty($item['title']))
-				<p class="text-h6">{{ $item['title'] }}</p>
-				@endif
-				@if (!empty($item['text']))
-				<p class="mt-2">{{ $item['text'] }}</p>
-				@endif
+			<a href="{{ $item['button']['url'] }}" data-gsap-element="card" class="__card relative bg-secondary radius overflow-hidden p-8">
+				<div class="relative z-10">
+					@if (!empty($item['image']['url']))
+					<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+					@endif
+					@if (!empty($item['title']))
+					<p class="text-h6">{{ $item['title'] }}</p>
+					@endif
+					@if (!empty($item['text']))
+					<p class="mt-2">{{ $item['text'] }}</p>
+					@endif
+					<p class="btn-underline mt-4">Zobacz produkty</p>
+				</div>
+				<img class="absolute -top-10/12 -right-5/12 mix-blend-overlay" src="/wp-content/uploads/2026/06/shade_shape.svg" />
 			</a>
 			@endforeach
 		</div>

@@ -11,7 +11,7 @@
 
 	<div class="__wrapper c-main relative grid grid-cols-1 lg:grid-cols-[1fr_3fr] items-start gap-6">
 
-		<aside class="__filters sticky top-20 order1">
+		<aside data-gsap-element="aside" class="__filters relative lg:sticky top-0 lg:top-20 order1">
 			@if (!empty($categoriesTree))
 			<ul class="space-y-3">
 				@foreach ($categoriesTree as $parent)
@@ -46,7 +46,7 @@
 			@if (!empty($products))
 			<div class="space-y-6">
 				@foreach ($products as $product)
-				<article class="flex rounded-xl items-center gap-8 bg-white b-shadow px-8 py-4">
+				<article data-gsap-element="card" class="flex flex-col md:flex-row rounded-xl items-start md:items-center gap-8 bg-white b-shadow py-10 px-10 lg:px-8 lg:py-4">
 
 					@if (!empty($product['thumbnail']))
 					<a href="{{ $product['permalink'] }}" class="block mt-3">
@@ -57,31 +57,31 @@
 					</a>
 					@endif
 
-					<div>
-						<h3 class="text-h6">
-							<a href="{{ $product['permalink'] }}" class="hover:text-primary transition">
-								{{ $product['title'] }}
-							</a>
-						</h3>
-						@if (!empty($product['form']))
-						<p class="mt-2">
-							{{ $product['form'] }}
-						</p>
-						@endif
-						@if (!empty($product['packaging']))
-						<p class="">
-							{{ $product['packaging'] }}
-						</p>
-						@endif
+					<div class="flex-1 flex flex-col lg:flex-row items-start lg:items-center gap-6">
+						<div>
+							<h3 class="text-h6">
+								<a href="{{ $product['permalink'] }}" class="hover:text-primary transition">
+									{{ $product['title'] }}
+								</a>
+							</h3>
+							@if (!empty($product['form']))
+							<p class="mt-2">
+								{{ $product['form'] }}
+							</p>
+							@endif
+							@if (!empty($product['packaging']))
+							<p class="">
+								{{ $product['packaging'] }}
+							</p>
+							@endif
+						</div>
+						<x-button
+							href="{{ $product['permalink'] }}"
+							variant="primary"
+							class="align-self-start lg:align-self-end ml-0 lg:ml-auto">
+							Sprawdź produkt
+						</x-button>
 					</div>
-
-					<x-button
-						href="{{ $product['permalink'] }}"
-						variant="primary"
-						class="align-self-end ml-auto"
-						data-gsap-element="btn">
-						Sprawdź produkt
-					</x-button>
 				</article>
 				@endforeach
 			</div>

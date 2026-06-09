@@ -19,7 +19,7 @@
 				<img data-gsap-element="img" class="radius img-m w-full object-cover" src="{{ $g_contact_1['image']['url'] }}'" alt="{{ $g_contact_1['image']['alt'] ?? '' }}" />
 				@endif
 
-				<div class="flex flex-col md:flex-row justify-between items-end gap-4 mt-10">
+				<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mt-10">
 					@if (!empty($g_contact_1['adress1']))
 					<div data-gsap-element="txt" class="text-white [&_strong]:!text-white">{!! $g_contact_1['adress1'] !!}</div>
 					@endif

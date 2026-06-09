@@ -15,7 +15,7 @@ $sectionClass .= ' ' . $background;
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-tiles -smt {{ $sectionClass }} {{ $section_class }}">
 	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 gap-8">
 
-		<div class="__top sticky top-10 h-max">
+		<div class="__top relative lg:sticky top-0 lg:top-20 h-max">
 			@if (!empty($g_tiles['image']['url']))
 			<img class="radius img-md w-full object-cover mb-6" src="{{ $g_tiles['image']['url'] }}" alt="{{ $g_tiles['image']['alt'] ?? '' }}" />
 			@endif
