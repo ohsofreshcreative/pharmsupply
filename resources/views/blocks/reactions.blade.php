@@ -12,7 +12,17 @@ $sectionClass .= ' ' . $background;
 
 <!--- reactions --->
 
+
+@if (!empty($breadcrumbs))
+<div class="absolute inset-x-0 z-40 w-full pt-2 mt-0 sm:-mt-6">
+	<div class="c-main">
+		{!! $breadcrumbs !!}
+	</div>
+</div>
+@endif
+
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-reactions -smt {{ $sectionClass }} {{ $section_class }}">
+
 	<div class="__wrapper c-main">
 		<div class="__top w-full md:w-1/2">
 			<h2 data-gsap-element="header" class="text-gradient m-header">{{ strip_tags($g_reactions['header']) }}</h2>

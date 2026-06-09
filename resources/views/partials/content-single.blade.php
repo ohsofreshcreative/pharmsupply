@@ -18,8 +18,16 @@ $hero_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
 @endphp
 
 <section data-gsap-anim="section" class="hero-blog relative overflow-visible">
+		@if (!empty($breadcrumbs))
+		<div class="absolute inset-x-0 z-60 w-full pt-2 mt-1">
+			<div class="c-main">
+				{!! $breadcrumbs !!}
+			</div>
+		</div>
+		@endif
 	<div class="absolute inset-0 z-0">
 		<div class="absolute inset-0 bg-gradient"></div>
+
 
 		@if($hero_image)
 		<div
@@ -81,6 +89,8 @@ $hero_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
 @php
 $content = apply_filters('the_content', get_the_content());
 
+$matches = [];
+
 preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_ORDER);
 
 		$toc = '<nav class="toc">
@@ -120,7 +130,7 @@ preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_
 
 					<div class="relative md:sticky top-0 md:top-30 h-max">
 						<p class="text-h5 text-primary m-title">Co znajdziesz w artykule:</p>
-						@if(count($matches))
+						@if(!empty($matches))
 						{!! $toc !!}
 						@endif
 					</div>
@@ -206,7 +216,7 @@ preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_
 					</section>
 					@endif
 
-					
+
 
 					<script>
 						document.addEventListener('DOMContentLoaded', function() {

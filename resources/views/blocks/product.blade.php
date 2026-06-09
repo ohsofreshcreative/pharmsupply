@@ -9,6 +9,25 @@ $product_attributes = [
 ];
 
 $product_terms = [];
+$product_category_terms = get_the_terms(get_the_ID(), 'product_category') ?: [];
+$product_parent_category = null;
+
+foreach ($product_category_terms as $term) {
+	$parent_term = $term;
+
+	if (!empty($term->parent)) {
+		$ancestors = get_ancestors($term->term_id, 'product_category', 'taxonomy');
+		$top_level_term_id = !empty($ancestors) ? end($ancestors) : $term->parent;
+		$resolved_parent = get_term($top_level_term_id, 'product_category');
+
+		if ($resolved_parent && !is_wp_error($resolved_parent)) {
+			$parent_term = $resolved_parent;
+		}
+	}
+
+	$product_parent_category = $parent_term;
+	break;
+}
 
 foreach ($product_attributes as $taxonomy => $label) {
 $terms = get_the_terms(get_the_ID(), $taxonomy);
@@ -31,16 +50,26 @@ $product_terms[$taxonomy] = [
 	$background => filled($background) && $background !== 'none',
 	])>
 
-	<div class="__wrapper c-main relative">
+	@if (!empty($breadcrumbs))
+	<div class="absolute inset-x-0 z-40 w-full pt-2 mt-0 sm:-mt-6">
+		<div class="c-main">
+			{!! $breadcrumbs !!}
+		</div>
+	</div>
+	@endif
+
+	<div class="__wrapper c-main relative pt-6">
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
 			@if (!empty($g_product['image']))
-			<div data-gsap-element="img" class="__img h-full order1">
-				<img class="object-cover w-full h-full aspect-[3/2] __img radius-img border border-primary-light" src="{{ $g_product['image']['url'] }}" alt="{{ $g_product['image']['alt'] ?? '' }}">
+			<div data-gsap-element="img" class="__img h-full order1 bg-white">
+				<img class="object-contain w-full h-full aspect-square __img radius-img border border-primary-light" src="{{ $g_product['image']['url'] }}" alt="{{ $g_product['image']['alt'] ?? '' }}">
 			</div>
 			@endif
 
 			<div class="__product order2">
-				<p data-gsap-element="category" class="w-max text-primary bg-primary-lighter border border-primary-light rounded-lg px-4 py-2">{{ get_the_terms(get_the_ID(), 'product_category')[0]->name ?? '' }}</p>
+				@if (!empty($product_parent_category))
+				<p data-gsap-element="category" class="w-max text-primary bg-primary-lighter border border-primary-light rounded-lg px-4 py-2">{{ $product_parent_category->name }}</p>
+				@endif
 				<h2 data-gsap-element="header" class="text-h4 mt-4">{{ $g_product['header'] }}</h2>
 
 				<div data-gsap-element="txt" class="__txt mt-4">

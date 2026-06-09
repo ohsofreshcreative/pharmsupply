@@ -9,7 +9,16 @@
 	$background => filled($background) && $background !== 'none',
 	])>
 
+	@if (!empty($breadcrumbs))
+	<div class="absolute inset-x-0 z-40 w-full pt-2 mt-0 sm:-mt-6">
+		<div class="c-main">
+			{!! $breadcrumbs !!}
+		</div>
+	</div>
+	@endif
+
 	<div class=" __wrapper c-main grid grid-cols-1 md:grid-cols-2 items-center gap-10 overflow-visible">
+
 		<div class="__content relative flex flex-col justify-center z-20 pt-10 pb-10 md:py-30">
 			<h1 data-gsap-element="header" class="text-gradient m-header">
 				{{ $g_intro['title'] }}

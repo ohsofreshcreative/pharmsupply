@@ -5,7 +5,15 @@
 
 <div class="c-main -smt -smb">
 
-	<h2 data-gsap-element="header" class="text-gradient m-header">Produkty</h2>
+	@if (!empty($breadcrumbs))
+	<div class="absolute inset-x-0 z-40 w-full pt-2 mt-0 sm:-mt-6">
+		<div class="c-main">
+			{!! $breadcrumbs !!}
+		</div>
+	</div>
+	@endif
+
+	<h2 data-gsap-element="header" class="text-gradient m-header mt-10">Produkty</h2>
 	<div class="bg-gradient radius px-20 pt-12 pb-14">
 		<h3 class="text-center text-white">Wyszukiwarka produktów</h3>
 		<div class="mt-4">@include('partials.product-filters')</div>

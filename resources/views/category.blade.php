@@ -26,13 +26,17 @@ $unique_id = 'clip_'.uniqid();
 @endphp
 
 <div class="b-category-hero category-header bg-primary-lighter relative overflow-hidden min-h-120">
-	@if (function_exists('yoast_breadcrumb'))
-	<div data-gsap-element="bread" class="__breadcrumb mb-4">
-		{!! yoast_breadcrumb('<p id="breadcrumbs">','</p>') !!}
+	@if (!empty($breadcrumbs))
+	<div class="absolute inset-x-0 z-40 w-full pt-2 mt-1">
+		<div class="c-main">
+			{!! $breadcrumbs !!}
+		</div>
 	</div>
 	@endif
 	<div class="__wrapper c-main">
-		<div class="__content w-full md:w-1/2 z-10 pt-30 pb-20">
+	
+		<div class="__content w-full lg:w-1/2 relative z-20 pt-30 pb-20">
+		
 			<h2 class="text-gradient m-header">
 				{!! $category_header ?: get_the_archive_title() !!}
 			</h2>
@@ -62,7 +66,7 @@ $unique_id = 'clip_'.uniqid();
 				</div>
 			</div>
 		</div>
-		<div class="__img absolute z-10 bottom-0 right-0 pointer-events-none">
+		<div class="__img relative lg:absolute z-0 bottom-0 right-0 pointer-events-none">
 			<img src="{{ $category_image['url'] }}" alt="{{ $category_image['alt'] }}" class="mask-img" />
 		</div>
 
