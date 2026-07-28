@@ -12,7 +12,7 @@
 	<div class="c-main">
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
 			<h2 data-gsap-element="title" class="text-gradient">{{ $posts_settings['title'] }}</h2>
-			<a href="/category/wszystkie-wpisy/" class="btn-arrow">
+			<a href="/category/blog/" class="btn-arrow">
 				Zobacz wszystkie
 			</a>
 		</div>
@@ -31,7 +31,23 @@
 						</div>
 						@endif
 						<div class="__content flex flex-col justify-between w-full mt-8 flex-grow text-center">
-							<p data-gsap-element="category" class="w-max text-secondary bg-secondary-lighter border border-secondary-light rounded-lg px-4 py-2 mx-auto">{{ get_the_category($post->ID)[0]->name ?? 'Brak kategorii' }}</p>
+							@php
+							$categories = get_the_category($post->ID);
+							$defaultCategoryId = (int) get_option('default_category');
+							$displayCategory = null;
+							foreach ($categories as $cat) {
+								if ((int) $cat->term_id !== $defaultCategoryId) {
+									$displayCategory = $cat;
+									break;
+								}
+							}
+							if (!$displayCategory && !empty($categories)) {
+								$displayCategory = $categories[0];
+							}
+							@endphp
+							@if($displayCategory)
+							<p data-gsap-element="category" class="w-max text-secondary bg-secondary-lighter border border-secondary-light rounded-lg px-4 py-2 mx-auto">{{ $displayCategory->name }}</p>
+							@endif
 							<h6 class="mt-2">
 								<a href="{{ get_permalink($post->ID) }}">
 									{{ get_the_title($post->ID) }}

@@ -56,6 +56,12 @@ class Contact extends Block
 				'toolbar' => 'full',
 				'media_upload' => true,
 			])
+			->addWysiwyg('adress2', [
+				'label' => 'Adres #2',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
 			->addImage('image', [
 				'label' => 'Obraz w tle',
 				'return_format' => 'array',

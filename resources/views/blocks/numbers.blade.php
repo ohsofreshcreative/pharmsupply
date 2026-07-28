@@ -31,15 +31,16 @@ $gridClass .= ' md:grid-cols-' . min($itemCount, 5); // Handles 2, 3, 4, 5 items
 			@if (!empty($g_numbers['r_numbers']))
 			<div class="grid {{ $gridClass }} gap-8 mt-6">
 				@foreach ($g_numbers['r_numbers'] as $item)
-				<div data-gsap-element="card" class="__card relative bg-primary-lighter border border-primary-light radius p-6">
+				<div data-gsap-element="card" class="__card relative bg-primary-lighter border border-primary-light overflow-hidden radius px-6 py-10">
+					<img class="absolute -top-70 -right-6/12 mix-blend-overlay z-1 pointer-events-none" src="/wp-content/uploads/2026/06/shade_shape.svg" />
 					@if (!empty($item['image']))
-					<img class="bg-primary rounded-full p-1" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}">
+					<img class="bg-primary rounded-full p-1 mb-4 relative z-10" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}">
 					@endif
 					@if (!empty($item['title']))
-					<p class="text-h5 mt-4">{{ $item['title'] }}</p>
+					<p class="text-h4 text-primary relative z-10">{{ $item['title'] }}</p>
 					@endif
 					@if (!empty($item['txt']))
-					<p class="">{{ $item['txt'] }}</p>
+					<p class="relative z-10">{{ $item['txt'] }}</p>
 					@endif
 				</div>
 				@endforeach

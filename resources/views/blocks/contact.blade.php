@@ -23,14 +23,17 @@
 					@if (!empty($g_contact_1['adress1']))
 					<div data-gsap-element="txt" class="text-white [&_strong]:!text-white">{!! $g_contact_1['adress1'] !!}</div>
 					@endif
-					<x-button
-						href="#gdzie-jestesmy"
-						variant="outline"
-						class=""
-						data-gsap-element="btn">
-						Gdzie jesteśmy
-					</x-button>
+					@if (!empty($g_contact_1['adress2']))
+					<div data-gsap-element="txt" class="text-white [&_strong]:!text-white">{!! $g_contact_1['adress2'] !!}</div>
+					@endif
 				</div>
+				<x-button
+					href="#gdzie-jestesmy"
+					variant="outline"
+					class="mt-4"
+					data-gsap-element="btn">
+					Gdzie jesteśmy
+				</x-button>
 
 				<div data-gsap-element="txt" class="__data border-t border-primary-100/50 mt-6">
 					<a data-gsap-element="txt" class="__phone flex items-center !text-white text-lg w-max mt-6" href="tel:{{ $g_contact_1['phone'] }}">{{ $g_contact_1['phone'] }}</a>

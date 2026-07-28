@@ -7,7 +7,7 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Connects extends Field
 {
-	public $name = 'Wezwanie do działania';
+	public $name = 'Wezwanie do działania2';
 	public $description = 'connects';
 	public $slug = 'connects';
 	public $category = 'formatting';

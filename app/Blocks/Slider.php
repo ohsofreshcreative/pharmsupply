@@ -62,6 +62,15 @@ class Slider extends Block
 				'allow_null'   => 1,
 			])
 
+			->addRelationship('slider_products', [
+				'label' => 'Wybierz konkretne produkty (opcjonalnie, nadpisuje kategorie)',
+				'post_type' => ['product'],
+				'filters' => ['search', 'taxonomy'],
+				'elements' => ['featured_image', 'post_type'],
+				'return_format' => 'object',
+				'allow_null' => 1,
+			])
+
 			/*--- USTAWIENIA BLOKU ---*/
 
 			->addTab('Ustawienia bloku', ['placement' => 'top'])
@@ -127,6 +136,7 @@ class Slider extends Block
 
 			'g_slider' => get_field('g_slider'),
 			'slider_categories'   => get_field('slider_categories'),
+			'slider_products'   => get_field('slider_products'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'nolist' => (bool) get_field('nolist'),
@@ -150,6 +160,16 @@ class Slider extends Block
 
 	public function slider_posts()
 	{
+		$selected_products = get_field('slider_products');
+
+		if (!empty($selected_products)) {
+			// ACF Relationship field returns list of post objects in the exact order selected by the user.
+			// Let's filter out anything that is not published, just in case.
+			return array_filter((array) $selected_products, function($post) {
+				return $post && $post->post_status === 'publish';
+			});
+		}
+
 		$selected_categories = get_field('slider_categories');
 
 		$args = [

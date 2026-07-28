@@ -25,11 +25,11 @@ $qApp = $_GET['product_app'] ?? '';
 	{{-- Rodzaj produktu --}}
 	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
 		<label for="product_cat" class="block font-semibold text-xl">
-			Rodzaj produktu
+			Rodzaj problemu
 		</label>
 		<select id="product_cat" name="product_cat"
 			class="w-full bg-transparent border-0 outline-none p-0 text-gray-600 focus:ring-0 appearance-none">
-			<option value="">Wpisz rodzaj produktu</option>
+			<option value="">Wpisz rodzaj problemu</option>
 			@foreach ($categories as $term)
 			<option value="{{ $term->slug }}" @selected($qCat===$term->slug)>{{ $term->name }}</option>
 			@endforeach
@@ -39,11 +39,11 @@ $qApp = $_GET['product_app'] ?? '';
 	{{-- Zastosowanie --}}
 	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0">
 		<label for="product_app" class="block font-semibold text-xl ">
-			Zastosowanie
+			Obszar terapeutyczny
 		</label>
 		<select id="product_app" name="product_app"
 			class="w-full bg-transparent border-0 outline-none p-0 text-gray-600 focus:ring-0 appearance-none">
-			<option value="">Wybierz zastosowanie</option>
+			<option value="">Wybierz obszar</option>
 			@foreach ($applications as $term)
 			<option value="{{ $term->slug }}" @selected($qApp===$term->slug)>{{ $term->name }}</option>
 			@endforeach
