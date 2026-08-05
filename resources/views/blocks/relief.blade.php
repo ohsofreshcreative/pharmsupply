@@ -32,7 +32,9 @@ $sectionClass .= ' ' . $background;
 			@foreach ($r_relief as $item)
 			<div data-gsap-element="card" class="__card flex items-center relative bg-primary-lighter border border-primary-light radius gap-4 p-8">
 				@if (!empty($item['image']['url']))
-				<img class="bg-primary rounded-full w-12 h-12 p-2" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+				<div class="__img bg-primary flex items-center justify-center rounded-full aspect-square !w-12 !h-12 p-2">
+					<img class=" " src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+				</div>
 				@endif
 				@if (!empty($item['title']))
 				<p class="text-h7">{{ $item['title'] }}</p>

@@ -1,5 +1,8 @@
 @php
-$categories = get_terms(['taxonomy' => 'product_category', 'hide_empty' => false]);
+$categories = array_filter(
+    get_terms(['taxonomy' => 'product_category', 'hide_empty' => false]),
+    fn($term) => $term->parent !== 0
+);
 $applications = get_terms(['taxonomy' => 'product_application', 'hide_empty' => false]);
 
 $action = get_post_type_archive_link('product');

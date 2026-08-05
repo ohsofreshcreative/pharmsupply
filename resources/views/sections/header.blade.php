@@ -9,7 +9,7 @@ use App\Walkers\MobileDropdownWalker;
 	<div class="items-center justify-between hidden h-full py-4 px-12 mx-auto xl:flex">
 		<a class="brand shrink-0" href="{{ home_url('/') }}">
 			@if ($logo)
-			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12">
+			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11">
 			@else
 			<span class="text-xl font-bold">{{ $siteName }}</span>
 			@endif
@@ -38,7 +38,7 @@ use App\Walkers\MobileDropdownWalker;
 	<div class="flex items-center justify-between p-4 mobile-menu fixed-top xl:hidden">
 		<a class="brand shrink-0" href="{{ home_url('/') }}">
 			@if ($logo)
-			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12">
+			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11">
 			@else
 			<span class="text-lg font-bold">{{ $siteName }}</span>
 			@endif
@@ -74,7 +74,7 @@ use App\Walkers\MobileDropdownWalker;
 		aria-label="Menu mobilne">
 		<div class="p-4 relative z-10">
 			<div class="flex items-center justify-between mb-6">
-				<span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12"></a></span>
+				<span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11"></a></span>
 				<button
 					@click="mobileOpen = false"
 					class="p-2 text-primary rounded-md">

@@ -112,6 +112,7 @@ $product_terms[$taxonomy] = [
 				@if (!empty($g_product['button']))
 				<x-button
 					:href="$g_product['button']['url']"
+					:target="!empty($g_product['button']['target']) ? $g_product['button']['target'] : '_self'"
 					variant="primary"
 					class="mt-6"
 					data-gsap-element="btn">

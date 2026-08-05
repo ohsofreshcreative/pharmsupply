@@ -3,14 +3,14 @@
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	@class([ 'b-hero relative pt-8 md:pt-26 overflow-visible' ,
+	@class([ 'b-hero relative pt-8 md:pt-22 [@media(max-height:900px)]:pt-14 overflow-visible' ,
 	$sectionClass=> filled($sectionClass),
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
 	])>
 
 	<div class=" __wrapper c-main grid grid-cols-1 md:grid-cols-2 items-center gap-10 overflow-visible">
-		<div class="__content relative flex flex-col justify-center z-20 pt-10 pb-10 md:py-30">
+		<div class="__content relative flex flex-col justify-center z-20 pt-10 pb-10 md:py-20">
 			<h1 data-gsap-element="header" class="text-gradient m-header">
 				{{ $g_hero['title'] }}
 			</h1>
