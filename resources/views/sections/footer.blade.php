@@ -1,7 +1,7 @@
 <footer class="footer bg-white overflow-hidden relative z-10">
 	<div class="__wrapper c-main relative z-10">
 
-		<div class="__widgets grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-6 pt-10 pb-36 mt-12">
+		<div class="__widgets grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-6 pt-10 pb-10 sm:pt-10 sm:pb-36 mt-12">
 			@for ($i = 1; $i <= 4; $i++)
 				@if (is_active_sidebar('sidebar-footer-' . $i))
 				<div>@php(dynamic_sidebar('sidebar-footer-' . $i))</div>

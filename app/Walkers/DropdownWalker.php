@@ -6,6 +6,35 @@ use Walker_Nav_Menu;
 
 class DropdownWalker extends Walker_Nav_Menu
 {
+    private function renderTitle($item, $args, $depth): string
+    {
+        $title = apply_filters('nav_menu_item_title', $item->title, $item, $args, $depth);
+        $classes = (array) $item->classes;
+        $isLanguageSwitcher = in_array('lang-item', $classes, true)
+            || in_array('pll-parent-menu-item', $classes, true);
+
+        if (! $isLanguageSwitcher) {
+            return esc_html($title);
+        }
+
+        return wp_kses($title, [
+            'img' => [
+                'src' => true,
+                'alt' => true,
+                'width' => true,
+                'height' => true,
+                'style' => true,
+                'class' => true,
+                'loading' => true,
+                'decoding' => true,
+            ],
+            'span' => [
+                'class' => true,
+                'lang' => true,
+            ],
+        ], array_merge(wp_allowed_protocols(), ['data']));
+    }
+
     /**
      * Starts the list before the elements are added.
      */
@@ -33,7 +62,7 @@ class DropdownWalker extends Walker_Nav_Menu
             // Zamiast <button> używamy <a> z linkiem do strony nadrzędnej.
             // Usunęliśmy `@click`, aby kliknięcie powodowało standardową nawigację.
             $output .= '<a href="' . esc_attr($item->url) . '" class="inline-flex items-center gap-x-1 text-sm font-medium hover:text-indigo-600">';
-            $output .= esc_html($item->title);
+            $output .= $this->renderTitle($item, $args, $depth);
             $output .= '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>';
             $output .= '</a>';
             // ### KONIEC ZMIANY ###
@@ -47,11 +76,11 @@ class DropdownWalker extends Walker_Nav_Menu
             if ($depth > 0) {
                 $link_classes = 'block rounded-xl px-6 py-4 text-sm text-gray-700 hover:bg-primary';
             } else {
-                $link_classes = 'text-sm font-medium hover:text-indigo-600';
+                $link_classes = '!text-base font-medium hover:text-indigo-600';
             }
 
             $output .= '<a href="' . esc_attr($item->url) . '" class="' . esc_attr($link_classes) . '">';
-            $output .= esc_html($item->title);
+            $output .= $this->renderTitle($item, $args, $depth);
             $output .= '</a>';
         }
     }

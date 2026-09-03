@@ -475,3 +475,39 @@ add_filter('paginate_links_output', function ($output) {
     $output = str_replace('next', 'next', $output);
     return $output;
 });
+
+
+/*--- POLYLANG ---*/
+
+/**
+ * Rejestracja stałych tekstów w Polylang.
+ */
+add_action('init', function () {
+	if (! function_exists('pll_register_string')) {
+		return;
+	}
+
+	$strings = [
+		'search_heading'             => 'Wyszukiwarka produktów',
+		'search_product_name'        => 'Nazwa produktu',
+		'search_product_placeholder' => 'Wpisz nazwę produktu',
+		'search_problem_type'        => 'Rodzaj problemu',
+		'search_problem_placeholder' => 'Wpisz rodzaj problemu',
+		'search_therapeutic_area'    => 'Obszar terapeutyczny',
+		'search_area_placeholder'    => 'Wybierz obszar',
+		'search_submit'              => 'Szukaj',
+	];
+
+	foreach ($strings as $name => $string) {
+		\pll_register_string($name, $string, 'Wyszukiwarka');
+	}
+
+	\pll_register_string('slider_check', 'Sprawdź', 'Slider');
+	\pll_register_string('indications_view_product', 'Sprawdź produkt', 'Wskazania');
+	\pll_register_string('indications_no_products', 'Brak produktów w wybranej kategorii.', 'Wskazania');
+	\pll_register_string('products_archive_title', 'Produkty', 'Produkty');
+	\pll_register_string('product_attribute_application', 'Zastosowanie', 'Atrybuty produktu');
+	\pll_register_string('product_attribute_regulatory_status', 'Status regulacyjny produktu', 'Atrybuty produktu');
+	\pll_register_string('product_attribute_form', 'Postać', 'Atrybuty produktu');
+	\pll_register_string('product_attribute_packaging', 'Opakowanie', 'Atrybuty produktu');
+});

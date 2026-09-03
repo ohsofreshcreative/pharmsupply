@@ -1,4 +1,6 @@
 @php
+$translate = static fn(string $text): string => function_exists('pll__') ? pll__($text) : $text;
+
 $categories = array_filter(
     get_terms(['taxonomy' => 'product_category', 'hide_empty' => false]),
     fn($term) => $term->parent !== 0
@@ -17,22 +19,22 @@ $qApp = $_GET['product_app'] ?? '';
 	{{-- Nazwa produktu --}}
 	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
 		<label for="product_s" class="block font-semibold text-xl">
-			Nazwa produktu
+			{{ $translate('Nazwa produktu') }}
 		</label>
 		<input type="text" id="product_s" name="product_s"
 			value="{{ esc_attr($qName) }}"
-			placeholder="Wpisz nazwę produktu"
+			placeholder="{{ $translate('Wpisz nazwę produktu') }}"
 			class="w-full bg-transparent border-0 outline-none p-0 text-gray-600 !placeholder-gray-500 focus:ring-0">
 	</div>
 
 	{{-- Rodzaj produktu --}}
 	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
 		<label for="product_cat" class="block font-semibold text-xl">
-			Rodzaj problemu
+			{{ $translate('Rodzaj problemu') }}
 		</label>
 		<select id="product_cat" name="product_cat"
 			class="w-full bg-transparent border-0 outline-none p-0 text-gray-600 focus:ring-0 appearance-none">
-			<option value="">Wpisz rodzaj problemu</option>
+			<option value="">{{ $translate('Wpisz rodzaj problemu') }}</option>
 			@foreach ($categories as $term)
 			<option value="{{ $term->slug }}" @selected($qCat===$term->slug)>{{ $term->name }}</option>
 			@endforeach
@@ -42,11 +44,11 @@ $qApp = $_GET['product_app'] ?? '';
 	{{-- Zastosowanie --}}
 	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0">
 		<label for="product_app" class="block font-semibold text-xl ">
-			Obszar terapeutyczny
+			{{ $translate('Obszar terapeutyczny') }}
 		</label>
 		<select id="product_app" name="product_app"
 			class="w-full bg-transparent border-0 outline-none p-0 text-gray-600 focus:ring-0 appearance-none">
-			<option value="">Wybierz obszar</option>
+			<option value="">{{ $translate('Wybierz obszar') }}</option>
 			@foreach ($applications as $term)
 			<option value="{{ $term->slug }}" @selected($qApp===$term->slug)>{{ $term->name }}</option>
 			@endforeach
@@ -56,7 +58,7 @@ $qApp = $_GET['product_app'] ?? '';
 	{{-- Submit --}}
 	<button type="submit"
 		class="bg-secondary hover:bg-secondary-hover cursor-pointer text-white rounded-full flex items-center justify-center gap-4 lg:gap-0 w-full lg:w-11 h-11">
-		<img src="/wp-content/uploads/2026/05/magnifier.svg" alt="Szukaj" class="w-5 h-5 w-max">
-		<p class="visible lg:hidden">Szukaj</p>
+		<img src="/wp-content/uploads/2026/05/magnifier.svg" alt="{{ $translate('Szukaj') }}" class="w-5 h-5 w-max">
+		<p class="visible lg:hidden">{{ $translate('Szukaj') }}</p>
 	</button>
 </form>

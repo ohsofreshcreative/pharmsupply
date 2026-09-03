@@ -10,7 +10,13 @@ $category_header = get_field('category_header', $term);
 $category_description = get_field('category_description', $term);
 $category_image = get_field('category_image', $term);
 
-$connects = get_field('connects', 'option');
+$language = function_exists('pll_current_language') ? pll_current_language('slug') : 'pl';
+$connectsField = $language === 'en' ? 'connects_en' : 'connects';
+$connects = get_field($connectsField, 'option');
+
+if ($language === 'en' && !array_filter((array) $connects)) {
+	$connects = get_field('connects', 'option');
+}
 
 // Pobranie pól ACF dla sekcji 'connects'
 $section_id = $connects['section_id'] ?? '';

@@ -40,27 +40,7 @@ class Search extends Block
 			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_search', ['label' => ''])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-			])
 			->addText('header', ['label' => 'Nagłówek'])
-			->addWysiwyg('txt', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
-			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
-			])
-			->addImage('bg', [
-				'label' => 'Grafika w tle',
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-			])
 			->endGroup()
 
 			->addTab('Ustawienia bloku', ['placement' => 'top'])

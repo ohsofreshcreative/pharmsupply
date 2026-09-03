@@ -42,21 +42,21 @@
 				setup_postdata($GLOBALS['post'] =& $post);
 				$terms = get_the_terms(get_the_ID(), 'product_category') ?: [];
 				$terms = array_values(array_reduce($terms, function ($parents, $term) {
-					$parentTerm = $term;
+				$parentTerm = $term;
 
-					if (!empty($term->parent)) {
-						$ancestors = get_ancestors($term->term_id, 'product_category', 'taxonomy');
-						$topLevelTermId = !empty($ancestors) ? end($ancestors) : $term->parent;
-						$resolvedParent = get_term($topLevelTermId, 'product_category');
+				if (!empty($term->parent)) {
+				$ancestors = get_ancestors($term->term_id, 'product_category', 'taxonomy');
+				$topLevelTermId = !empty($ancestors) ? end($ancestors) : $term->parent;
+				$resolvedParent = get_term($topLevelTermId, 'product_category');
 
-						if ($resolvedParent && !is_wp_error($resolvedParent)) {
-							$parentTerm = $resolvedParent;
-						}
-					}
+				if ($resolvedParent && !is_wp_error($resolvedParent)) {
+				$parentTerm = $resolvedParent;
+				}
+				}
 
-					$parents[$parentTerm->term_id] = $parentTerm;
+				$parents[$parentTerm->term_id] = $parentTerm;
 
-					return $parents;
+				return $parents;
 				}, []));
 				@endphp
 
@@ -83,8 +83,8 @@
 
 
 									<p data-gsap-element="btn" class="btn btn-primary-small mt-4">
-										Sprawdź
-									<p>
+										{{ pll__('Sprawdź') }}
+									</p>
 						</div>
 					</a>
 				</div>

@@ -1,5 +1,9 @@
 <!--- indications -->
 
+@php
+$translate = static fn(string $text): string => function_exists('pll__') ? pll__($text) : $text;
+@endphp
+
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -79,14 +83,14 @@
 							href="{{ $product['permalink'] }}"
 							variant="primary"
 							class="align-self-start lg:align-self-end ml-0 lg:ml-auto">
-							Sprawdź produkt
+							{{ $translate('Sprawdź produkt') }}
 						</x-button>
 					</div>
 				</article>
 				@endforeach
 			</div>
 			@else
-			<p class="mt-8">Brak produktów w wybranej kategorii.</p>
+			<p class="mt-8">{{ $translate('Brak produktów w wybranej kategorii.') }}</p>
 			@endif
 		</div>
 

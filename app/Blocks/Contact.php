@@ -67,6 +67,11 @@ class Contact extends Block
 				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
+			->addLink('button', [
+				'label' => 'Przycisk',
+				'return_format' => 'array',
+			])
+			->addText('social', ['label' => 'Zobacz również'])
 			->endGroup()
 			/*--- TAB #2 ---*/
 			->addTab('Formularz', ['placement' => 'top'])

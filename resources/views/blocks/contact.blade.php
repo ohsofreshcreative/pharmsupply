@@ -27,13 +27,15 @@
 					<div data-gsap-element="txt" class="text-white [&_strong]:!text-white">{!! $g_contact_1['adress2'] !!}</div>
 					@endif
 				</div>
+				@if (!empty($g_contact_1['button']))
 				<x-button
-					href="#gdzie-jestesmy"
+					:href="$g_contact_1['button']['url']"
 					variant="outline"
-					class="mt-4"
+					class="mt-6"
 					data-gsap-element="btn">
-					Gdzie jesteśmy
+					{{ $g_contact_1['button']['title'] }}
 				</x-button>
+				@endif
 
 				<div data-gsap-element="txt" class="__data border-t border-primary-100/50 mt-6">
 					<a data-gsap-element="txt" class="__phone flex items-center !text-white text-lg w-max mt-6" href="tel:{{ $g_contact_1['phone'] }}">{{ $g_contact_1['phone'] }}</a>
@@ -41,7 +43,7 @@
 				</div>
 
 				<div data-gsap-element="social" class="__social border-t border-primary-100/50 flex items-center gap-4 pt-6 mt-6">
-					<p class="text-white">Zobacz również</p>
+					<p class="text-white">{{ $g_contact_1['social'] }}</p>
 					<img src="/wp-content/uploads/2026/05/fb-1.svg" />
 				</div>
 			</div>

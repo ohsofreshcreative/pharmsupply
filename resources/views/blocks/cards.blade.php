@@ -42,7 +42,7 @@ $sectionClass .= ' ' . $background;
 					@if (!empty($item['text']))
 					<p class="mt-2">{{ $item['text'] }}</p>
 					@endif
-					<p class="btn-underline mt-4">Zobacz produkty</p>
+					<p class="btn-underline mt-4"> {{ $item['button']['title'] }}</p>
 				</div>
 				<img class="absolute -top-10/12 -right-5/12 mix-blend-overlay" src="/wp-content/uploads/2026/06/shade_shape.svg" />
 			</a>

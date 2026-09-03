@@ -27,11 +27,38 @@ class Connects extends Field
 		$connects
 			->setLocation('options_page', '==', 'connects')
 			/*--- FIELDS ---*/
-			->addTab('Treść', ['placement' => 'top'])
+			->addTab('Treść', [
+				'label' => 'Treść PL',
+				'placement' => 'top',
+			])
 			->addGroup('connects', ['label' => ''])
 			->addImage('image', [
 				'label' => 'Obraz',
 				'return_format' => 'array', // lub 'url', lub 'id'
+				'preview_size' => 'thumbnail',
+			])
+			->addText('header', ['label' => 'Nagłówek'])
+			->addWysiwyg('txt', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
+			->addLink('button', [
+				'label' => 'Przycisk #1',
+				'return_format' => 'array',
+			])
+			->addLink('button2', [
+				'label' => 'Przycisk #2',
+				'return_format' => 'array',
+			])
+			->endGroup()
+
+			->addTab('Treść EN', ['placement' => 'top'])
+			->addGroup('connects_en', ['label' => ''])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
 			->addText('header', ['label' => 'Nagłówek'])

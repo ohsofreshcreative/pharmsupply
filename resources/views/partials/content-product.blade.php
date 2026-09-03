@@ -1,4 +1,6 @@
 @php
+$translate = static fn(string $text): string => function_exists('pll__') ? pll__($text) : $text;
+
 $terms = get_the_terms(get_the_ID(), 'product_category') ?: [];
 
 $terms = array_values(array_reduce($terms, function ($parents, $term) {
@@ -42,8 +44,8 @@ $terms = array_values(array_reduce($terms, function ($parents, $term) {
 					<p class="text-h7 !text-body font-header">{{ get_the_title() }}</p>
 
 					<p data-gsap-element="btn" class="btn btn-primary-small mt-4">
-						Sprawdź
-					<p>
+						{{ $translate('Sprawdź') }}
+					</p>
 		</div>
 	</a>
 </article>

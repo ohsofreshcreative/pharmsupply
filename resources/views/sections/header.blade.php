@@ -1,13 +1,29 @@
 @php
 use App\Walkers\DropdownWalker;
 use App\Walkers\MobileDropdownWalker;
+
+$homeUrl = function_exists('pll_home_url') ? pll_home_url() : home_url('/');
+
+$contactPage = get_page_by_path('kontakt');
+$contactPageId = $contactPage?->ID;
+
+if ($contactPageId && function_exists('pll_get_post')) {
+	$translatedContactPageId = pll_get_post($contactPageId);
+
+	if ($translatedContactPageId) {
+		$contactPageId = $translatedContactPageId;
+	}
+}
+
+$contactUrl = $contactPageId ? get_permalink($contactPageId) : home_url('/kontakt/');
+$contactLabel = $contactPageId ? get_the_title($contactPageId) : 'Kontakt';
 @endphp
 
 <header x-data="{ mobileOpen: false }" class="relative top-0 z-50 bg-white masthead fixed-top">
 
 	<!-- Desktop Header -->
 	<div class="items-center justify-between hidden h-full py-4 px-12 mx-auto xl:flex">
-		<a class="brand shrink-0" href="{{ home_url('/') }}">
+		<a class="brand shrink-0" href="{{ $homeUrl }}">
 			@if ($logo)
 			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11">
 			@else
@@ -28,15 +44,15 @@ use App\Walkers\MobileDropdownWalker;
 
 
 		<div class="">
-			<a href="/kontakt/" class="block w-full btn btn-secondary">
-				Kontakt
+			<a href="{{ $contactUrl }}" class="block w-full btn btn-secondary">
+				{{ $contactLabel }}
 			</a>
 		</div>
 	</div>
 
 	<!-- Mobile Header Bar -->
 	<div class="flex items-center justify-between p-4 mobile-menu fixed-top xl:hidden">
-		<a class="brand shrink-0" href="{{ home_url('/') }}">
+		<a class="brand shrink-0" href="{{ $homeUrl }}">
 			@if ($logo)
 			<img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11">
 			@else
@@ -74,7 +90,7 @@ use App\Walkers\MobileDropdownWalker;
 		aria-label="Menu mobilne">
 		<div class="p-4 relative z-10">
 			<div class="flex items-center justify-between mb-6">
-				<span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11"></a></span>
+				<span class=""><a class="brand shrink-0" href="{{ $homeUrl }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-11"></a></span>
 				<button
 					@click="mobileOpen = false"
 					class="p-2 text-primary rounded-md">
@@ -98,8 +114,8 @@ use App\Walkers\MobileDropdownWalker;
 			@endif
 
 			<div class="mt-8">
-				<a href="/kontakt/" class="block w-full btn btn-secondary">
-					Kontakt
+				<a href="{{ $contactUrl }}" class="block w-full btn btn-secondary">
+					{{ $contactLabel }}
 				</a>
 			</div>
 		</div>

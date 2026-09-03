@@ -3,6 +3,11 @@
 @section('content')
 @include('partials.page-header')
 
+@php
+$translate = static fn(string $text): string =>
+function_exists('pll__') ? pll__($text) : $text;
+@endphp
+
 <div class="c-main -smt -smb">
 
 	@if (!empty($breadcrumbs))
@@ -13,10 +18,17 @@
 	</div>
 	@endif
 
-	<h2 data-gsap-element="header" class="text-gradient m-header mt-10">Produkty</h2>
+	<h2 data-gsap-element="header" class="text-gradient m-header mt-10">
+		{{ $translate('Produkty') }}
+	</h2>
 	<div class="bg-gradient radius px-20 pt-12 pb-14">
-		<h3 class="text-center text-white">Wyszukiwarka produktów</h3>
-		<div class="mt-4">@include('partials.product-filters')</div>
+		<h3 class="text-center text-white">
+			{{ $translate('Wyszukiwarka produktów') }}
+		</h3>
+
+		<div class="mt-4">
+			@include('partials.product-filters')
+		</div>
 	</div>
 
 	@if (! have_posts())

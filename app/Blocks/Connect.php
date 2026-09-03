@@ -71,8 +71,18 @@ class Connect extends Block
 	 */
 	public function with()
 	{
+		$language = function_exists('pll_current_language')
+			? pll_current_language('slug')
+			: 'pl';
+		$fieldName = $language === 'en' ? 'connects_en' : 'connects';
+		$connects = get_field($fieldName, 'option');
+
+		if ($language === 'en' && ! array_filter((array) $connects)) {
+			$connects = get_field('connects', 'option');
+		}
+
 		return [
-			'connects' => get_field('connects', 'option'),
+			'connects' => $connects,
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'nomt' => get_field('nomt'),

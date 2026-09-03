@@ -8,6 +8,35 @@ class MobileDropdownWalker extends Walker_Nav_Menu
 {
     private $current_item_url;
 
+    private function renderTitle($item, $args, $depth): string
+    {
+        $title = apply_filters('nav_menu_item_title', $item->title, $item, $args, $depth);
+        $classes = (array) $item->classes;
+        $isLanguageSwitcher = in_array('lang-item', $classes, true)
+            || in_array('pll-parent-menu-item', $classes, true);
+
+        if (! $isLanguageSwitcher) {
+            return esc_html($title);
+        }
+
+        return wp_kses($title, [
+            'img' => [
+                'src' => true,
+                'alt' => true,
+                'width' => true,
+                'height' => true,
+                'style' => true,
+                'class' => true,
+                'loading' => true,
+                'decoding' => true,
+            ],
+            'span' => [
+                'class' => true,
+                'lang' => true,
+            ],
+        ], array_merge(wp_allowed_protocols(), ['data']));
+    }
+
     /**
      * Starts the list before the elements are added.
      */
@@ -42,7 +71,7 @@ class MobileDropdownWalker extends Walker_Nav_Menu
             
             // Używamy klas `block py-1` dla spójności, dodając `relative` do pozycjonowania strzałki
             $output .= '<button @click="open = !open" class="block w-full py-1 text-left relative">';
-            $output .= '<span class="!text-white !text-xl hover:!text-primary-400">' . esc_html($item->title) . '</span>';
+            $output .= '<span class="!text-white !text-xl hover:!text-primary-400">' . $this->renderTitle($item, $args, $depth) . '</span>';
             
             // Pozycjonujemy strzałkę absolutnie wewnątrz przycisku
             $output .= '<svg class="w-5 h-5 text-primary-light transition-transform duration-200 shrink-0 absolute top-1/2 right-0 -translate-y-1/2" :class="{ \'rotate-180\': open }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>';
@@ -52,7 +81,7 @@ class MobileDropdownWalker extends Walker_Nav_Menu
         else {
             $output .= '<li>';
             $output .= '<a href="' . esc_attr($item->url) . '" class="block py-1">';
-            $output .= esc_html($item->title);
+            $output .= $this->renderTitle($item, $args, $depth);
             $output .= '</a>';
         }
     }

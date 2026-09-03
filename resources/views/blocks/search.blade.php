@@ -13,7 +13,7 @@
 
 
 		<div class="__search bg-gradient radius p-10 md:px-20 md:pt-12 md:pb-14">
-			<h3 class="text-center text-white">Wyszukiwarka produktów</h3>
+			<h3 class="text-center text-white">{{ $g_search['header'] ?? '' }}</h3>
 
 			<div class="mt-8">
 				@include('partials.product-filters')

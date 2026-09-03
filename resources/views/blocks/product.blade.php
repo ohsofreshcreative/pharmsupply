@@ -1,6 +1,8 @@
 <!--- product -->
 
 @php
+$translate = static fn(string $text): string => function_exists('pll__') ? pll__($text) : $text;
+
 $product_attributes = [
 'product_application' => 'Zastosowanie',
 'product_regulatory_status' => 'Status regulacyjny produktu',
@@ -13,20 +15,20 @@ $product_category_terms = get_the_terms(get_the_ID(), 'product_category') ?: [];
 $product_parent_category = null;
 
 foreach ($product_category_terms as $term) {
-	$parent_term = $term;
+$parent_term = $term;
 
-	if (!empty($term->parent)) {
-		$ancestors = get_ancestors($term->term_id, 'product_category', 'taxonomy');
-		$top_level_term_id = !empty($ancestors) ? end($ancestors) : $term->parent;
-		$resolved_parent = get_term($top_level_term_id, 'product_category');
+if (!empty($term->parent)) {
+$ancestors = get_ancestors($term->term_id, 'product_category', 'taxonomy');
+$top_level_term_id = !empty($ancestors) ? end($ancestors) : $term->parent;
+$resolved_parent = get_term($top_level_term_id, 'product_category');
 
-		if ($resolved_parent && !is_wp_error($resolved_parent)) {
-			$parent_term = $resolved_parent;
-		}
-	}
+if ($resolved_parent && !is_wp_error($resolved_parent)) {
+$parent_term = $resolved_parent;
+}
+}
 
-	$product_parent_category = $parent_term;
-	break;
+$product_parent_category = $parent_term;
+break;
 }
 
 foreach ($product_attributes as $taxonomy => $label) {
@@ -96,7 +98,7 @@ $product_terms[$taxonomy] = [
 
 						<div>
 							<div class="text-sm opacity-70">
-								{{ $attribute['label'] }}
+								{{ $translate($attribute['label']) }}
 							</div>
 
 							<div class="font-medium">

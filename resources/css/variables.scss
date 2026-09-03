@@ -1178,11 +1178,13 @@ article.post:hover {
 /*--- !SINGLE - BLOG ---*/
 
 .hero-blog {
+
 	.woocommerce-breadcrumb,
 	#breadcrumbs {
 		& a {
 			color: #FFF;
 		}
+
 		& a:hover {
 			color: #ffffff9f;
 		}
@@ -1286,6 +1288,10 @@ article.post:hover {
 	}
 }
 
+.single-product footer {
+	margin-top: var(--smt) !important;
+}
+
 /*--- !FOOTER ---*/
 
 .footer-py {
@@ -1306,7 +1312,14 @@ article.post:hover {
 		}
 
 		.menu {
-			line-height: 2.5rem;
+			margin-top: 16px;
+			display: flex;
+			flex-direction: column;
+			gap: 0.7rem;
+		}
+
+		.menu a {
+			line-height: 1.5rem;
 		}
 	}
 
@@ -1367,8 +1380,12 @@ footer {
 
 /* Ukryj menu na telefonach */
 @media (max-width: 768px) {
+	.footer_widget.text-3 {
+		padding-bottom: 24px;
+	}
+
 	.footer_widget {
-		margin-bottom: 0px;
+		margin-bottom: 8px;
 	}
 
 	.footer__widget::first-child {
@@ -1376,6 +1393,7 @@ footer {
 	}
 
 	.menu {
+		margin-top: 0px !important;
 		max-height: 0;
 		overflow: hidden;
 		transition: max-height 0.3s;
@@ -1387,7 +1405,7 @@ footer {
 	}
 
 	.widget-title::after {
-		content: url('/wp-content/uploads/2025/12/btn-arrow.svg');
+		content: url('/resources/images/bottom-arrow.svg');
 		position: absolute;
 		/*top: 50%;*/
 		right: 10px;
@@ -1395,10 +1413,11 @@ footer {
 		transition: transform 0.3s;
 		display: block !important;
 		width: 12px;
+		margin-top: -3px;
 	}
 
 	.footer_widget.open .widget-title::after {
-		content: url('/wp-content/uploads/2025/12/btn-arrow.svg');
+		content: url('/resources/images/bottom-arrow.svg');
 		position: absolute;
 		/*top: 50%;*/
 		right: 10px;
@@ -1406,7 +1425,7 @@ footer {
 		transition: transform 0.3s;
 		display: block !important;
 		width: 12px;
-		margin-top: -6px;
+		margin-top: 3px;
 	}
 
 	.__widget {
