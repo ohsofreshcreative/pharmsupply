@@ -16,7 +16,7 @@ $translate = static fn(string $text): string => function_exists('pll__') ? pll__
 
 	<div class="__wrapper c-main relative grid grid-cols-1 lg:grid-cols-[1fr_3fr] items-start gap-6">
 
-		<aside data-gsap-element="aside" class="__filters relative lg:sticky top-0 lg:top-20 order1">
+		<aside data-gsap-element="aside" class="__filters relative order1">
 			@if (!empty($categoriesTree))
 			<ul class="__category-list">
 				<li>
@@ -27,15 +27,32 @@ $translate = static fn(string $text): string => function_exists('pll__') ? pll__
 					</a>
 				</li>
 				@foreach ($categoriesTree as $parent)
+				@php
+					$hasChildren = !empty($parent['children']);
+					$isExpanded = $activeCategorySlug === $parent['slug']
+						|| in_array($activeCategorySlug, array_column($parent['children'], 'slug'), true);
+					$childrenId = $resultsId . '-category-' . $loop->index;
+				@endphp
 				<li>
-					<a href="{{ $parent['url'] }}#{{ $resultsId }}"
-						@class(['__category-link __category-parent', '__active' => $activeCategorySlug === $parent['slug']])
-						@if ($activeCategorySlug === $parent['slug']) aria-current="true" @endif>
-						{{ $parent['name'] }}
-					</a>
+					<div class="__category-heading">
+						<a href="{{ $parent['url'] }}#{{ $resultsId }}"
+							@class(['__category-link __category-parent', '__active' => $activeCategorySlug === $parent['slug']])
+							@if ($activeCategorySlug === $parent['slug']) aria-current="true" @endif>
+							{{ $parent['name'] }}
+						</a>
+						@if ($hasChildren)
+						<button type="button" class="__category-toggle"
+							aria-label="{{ $parent['name'] }}"
+							aria-expanded="{{ $isExpanded ? 'true' : 'false' }}" aria-controls="{{ $childrenId }}">
+							<svg class="__category-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+								<path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</button>
+						@endif
+					</div>
 
-					@if (!empty($parent['children']))
-					<ul class="__category-children">
+					@if ($hasChildren)
+					<ul id="{{ $childrenId }}" class="__category-children" @if (!$isExpanded) hidden @endif>
 						@foreach ($parent['children'] as $child)
 						<li>
 							<a
