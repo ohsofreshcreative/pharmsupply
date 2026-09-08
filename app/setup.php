@@ -524,6 +524,7 @@ add_action('init', function () {
 	}
 
 	\pll_register_string('slider_check', 'Sprawdź', 'Slider');
+	\pll_register_string('indications_all_products', 'Wszystkie produkty', 'Wskazania');
 	\pll_register_string('indications_view_product', 'Sprawdź produkt', 'Wskazania');
 	\pll_register_string('indications_no_products', 'Brak produktów w wybranej kategorii.', 'Wskazania');
 	\pll_register_string('products_archive_title', 'Produkty', 'Produkty');

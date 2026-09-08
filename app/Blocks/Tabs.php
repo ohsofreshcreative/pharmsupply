@@ -27,15 +27,6 @@ class Tabs extends Block
         $tabs
             ->setLocation('block', '==', 'acf/tabs')
 
-            ->addText('block-title', [
-                'label' => 'Tytuł',
-                'required' => 0,
-            ])
-            ->addAccordion('accordion1', [
-                'label' => 'Zakładki',
-                'open' => false,
-                'multi_expand' => true,
-            ])
 
             /*--- TREŚCI NAGŁÓWKA ---*/
             ->addTab('Treści', ['placement' => 'top'])

@@ -29,15 +29,6 @@ class Search extends Block
 
 		$search
 			->setLocation('block', '==', 'acf/search')
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Wyszukiwarka produktów',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_search', ['label' => ''])
 			->addText('header', ['label' => 'Nagłówek'])

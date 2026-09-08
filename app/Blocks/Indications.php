@@ -29,15 +29,6 @@ class indications extends Block
 
         $indications
             ->setLocation('block', '==', 'acf/indications')
-            ->addText('block-title', [
-                'label' => 'Tytuł',
-                'required' => 0,
-            ])
-            ->addAccordion('accordion1', [
-                'label' => 'Wskazania',
-                'open' => false,
-                'multi_expand' => true,
-            ])
             ->addTab('Elementy', ['placement' => 'top'])
             ->addGroup('g_indications', ['label' => ''])
             ->addImage('image', [
@@ -172,7 +163,6 @@ class indications extends Block
             'taxonomy' => 'product_category',
             'hide_empty' => false,
             'parent' => 0,
-            'number' => 3,
             'orderby' => 'name',
             'order' => 'ASC',
         ]);

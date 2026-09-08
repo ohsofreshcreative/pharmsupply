@@ -26,15 +26,6 @@ class Relief extends Block
 
 		$relief
 			->setLocation('block', '==', 'acf/relief') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Wartości produktu',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_relief', ['label' => ''])

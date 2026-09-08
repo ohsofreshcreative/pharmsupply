@@ -29,15 +29,6 @@ class Choice extends Block
 
 		$choice
 			->setLocation('block', '==', 'acf/choice') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Wybrane produkty',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_choice', ['label' => ''])

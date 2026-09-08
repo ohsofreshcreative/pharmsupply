@@ -26,15 +26,6 @@ class CtaBg extends Block
 
 		$cta_bg
 			->setLocation('block', '==', 'acf/cta-bg') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Wezwanie do działania - Tło',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- FIELDS ---*/
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('cta_bg', ['label' => ''])

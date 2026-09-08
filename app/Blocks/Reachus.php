@@ -31,15 +31,6 @@ class Reachus extends Block
 		$reachus
 			->setLocation('block', '==', 'acf/reachus') // ważne!
 			/*--- FIELDS ---*/
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Kontakt',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- TAB #1 ---*/
 			->addTab('Dane', ['placement' => 'top'])
 			->addGroup('g_reachus_1', ['label' => ''])

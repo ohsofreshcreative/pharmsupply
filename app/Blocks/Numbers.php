@@ -27,15 +27,6 @@ class Numbers extends Block
 
 		$numbers
 			->setLocation('block', '==', 'acf/numbers') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Liczby',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- FIELDS ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_numbers', ['label' => ''])

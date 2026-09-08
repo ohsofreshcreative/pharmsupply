@@ -1,6 +1,7 @@
 <!--- indications -->
 
 @php
+$resultsId = sanitize_html_class(($section_id ?: ($block->data['id'] ?? 'indications')) . '-results');
 $translate = static fn(string $text): string => function_exists('pll__') ? pll__($text) : $text;
 @endphp
 
@@ -17,22 +18,30 @@ $translate = static fn(string $text): string => function_exists('pll__') ? pll__
 
 		<aside data-gsap-element="aside" class="__filters relative lg:sticky top-0 lg:top-20 order1">
 			@if (!empty($categoriesTree))
-			<ul class="space-y-3">
+			<ul class="__category-list">
+				<li>
+					<a href="{{ $filterBaseUrl }}#{{ $resultsId }}"
+						@class(['__category-link __category-parent', '__active' => $activeCategorySlug === ''])
+						@if ($activeCategorySlug === '') aria-current="true" @endif>
+						{{ $translate('Wszystkie produkty') }}
+					</a>
+				</li>
 				@foreach ($categoriesTree as $parent)
 				<li>
-					<p class="font-header text-h5">
+					<a href="{{ $parent['url'] }}#{{ $resultsId }}"
+						@class(['__category-link __category-parent', '__active' => $activeCategorySlug === $parent['slug']])
+						@if ($activeCategorySlug === $parent['slug']) aria-current="true" @endif>
 						{{ $parent['name'] }}
-					</p>
+					</a>
 
 					@if (!empty($parent['children']))
-					<ul class="mt-2 space-y-1">
+					<ul class="__category-children">
 						@foreach ($parent['children'] as $child)
 						<li>
 							<a
-								href="{{ $child['url'] }}"
-								@class([ '!text-gray-500' , '__active'=> $activeCategorySlug === $child['slug'],
-								'border-gray-200 hover:border-primary-light' => $activeCategorySlug !== $child['slug'],
-								])>
+								href="{{ $child['url'] }}#{{ $resultsId }}"
+								@class(['__category-link', '__active' => $activeCategorySlug === $child['slug']])
+								@if ($activeCategorySlug === $child['slug']) aria-current="true" @endif>
 								{{ $child['name'] }}
 							</a>
 						</li>
@@ -45,36 +54,36 @@ $translate = static fn(string $text): string => function_exists('pll__') ? pll__
 			@endif
 		</aside>
 
-		<div class="__indications order2">
+		<div id="{{ $resultsId }}" class="__indications order2">
 
 			@if (!empty($products))
-			<div class="space-y-6">
+			<div class="space-y-3">
 				@foreach ($products as $product)
-				<article data-gsap-element="card" class="flex flex-col md:flex-row rounded-xl items-start md:items-center gap-8 bg-white b-shadow py-10 px-10 lg:px-8 lg:py-4">
+				<article data-gsap-element="card" class="flex flex-col md:flex-row rounded-xl items-start md:items-center gap-4 bg-white b-shadow p-4 lg:px-5 lg:py-3">
 
 					@if (!empty($product['thumbnail']))
-					<a href="{{ $product['permalink'] }}" class="block mt-3">
+					<a href="{{ $product['permalink'] }}" class="block shrink-0">
 						<img
 							src="{{ $product['thumbnail'] }}"
 							alt="{{ $product['title'] }}"
-							class="h-50 w-50 min-w-50 min-h-50 rounded-lg object-contain object-center">
+							class="h-28 w-28 md:h-32 md:w-32 rounded-lg object-contain object-center">
 					</a>
 					@endif
 
-					<div class="flex-1 flex flex-col lg:flex-row items-start lg:items-center gap-6">
+					<div class="flex-1 flex flex-col lg:flex-row items-start lg:items-center gap-3">
 						<div>
-							<h3 class="text-h6">
+							<h3 class="!text-lg !leading-snug">
 								<a href="{{ $product['permalink'] }}" class="hover:text-primary transition">
 									{{ $product['title'] }}
 								</a>
 							</h3>
 							@if (!empty($product['form']))
-							<p class="mt-2">
+							<p class="mt-1 text-sm">
 								{{ $product['form'] }}
 							</p>
 							@endif
 							@if (!empty($product['packaging']))
-							<p class="">
+							<p class="text-sm">
 								{{ $product['packaging'] }}
 							</p>
 							@endif
@@ -82,7 +91,7 @@ $translate = static fn(string $text): string => function_exists('pll__') ? pll__
 						<x-button
 							href="{{ $product['permalink'] }}"
 							variant="primary"
-							class="align-self-start lg:align-self-end ml-0 lg:ml-auto">
+							class="align-self-start lg:align-self-end ml-0 lg:ml-auto !px-4 !py-2 !text-sm">
 							{{ $translate('Sprawdź produkt') }}
 						</x-button>
 					</div>

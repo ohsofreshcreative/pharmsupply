@@ -27,15 +27,6 @@ class Intro extends Block
 
 		$intro
 			->setLocation('block', '==', 'acf/intro') // ważne!
-			->addText('block-title', [
-				'label' => 'Tytuł',
-				'required' => 0,
-			])
-			->addAccordion('accordion1', [
-				'label' => 'Hero - Podstrona',
-				'open' => false,
-				'multi_expand' => true,
-			])
 			/*--- TAB #1 ---*/
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_intro', ['label' => 'intro'])
