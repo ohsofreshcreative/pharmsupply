@@ -15,7 +15,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CCT8qMPf.css",
+    "file": "assets/app-BqqcAM-R.css",
     "name": "app",
     "names": [
       "app.css"
@@ -28,13 +28,17 @@
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-Db-nLAX4.css",
+    "file": "assets/editor-CXkYDPYL.css",
     "name": "editor",
     "names": [
       "editor.css"
     ],
     "src": "resources/css/editor.css",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/bottom-arrow-CaYEi6Ej.svg",
+      "assets/check-CcolzIvH.svg"
+    ]
   },
   "resources/images/bottom-arrow.svg": {
     "file": "assets/bottom-arrow-CaYEi6Ej.svg",

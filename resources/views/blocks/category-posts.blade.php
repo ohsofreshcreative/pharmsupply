@@ -36,13 +36,13 @@
 							$defaultCategoryId = (int) get_option('default_category');
 							$displayCategory = null;
 							foreach ($categories as $cat) {
-								if ((int) $cat->term_id !== $defaultCategoryId) {
-									$displayCategory = $cat;
-									break;
-								}
+							if ((int) $cat->term_id !== $defaultCategoryId) {
+							$displayCategory = $cat;
+							break;
+							}
 							}
 							if (!$displayCategory && !empty($categories)) {
-								$displayCategory = $categories[0];
+							$displayCategory = $categories[0];
 							}
 							@endphp
 							@if($displayCategory)
@@ -50,11 +50,11 @@
 							@endif
 							<h6 class="mt-2">
 								<a href="{{ get_permalink($post->ID) }}">
-									{{ get_the_title($post->ID) }}
+									{!! get_the_title($post->ID) !!}
 								</a>
 							</h6>
 							<a href="{{ get_permalink($post->ID) }}" class="bg-secondary group-hover/card:bg-secondary-hover rounded-full flex items-center justify-center w-14 h-14 p-5 mt-6 mx-auto">
-					<img src="/wp-content/uploads/2026/05/arrow.svg" />
+								<img src="/wp-content/uploads/2026/05/arrow.svg" />
 							</a>
 						</div>
 					</div>

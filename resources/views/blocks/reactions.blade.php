@@ -48,16 +48,18 @@ $sectionClass .= ' ' . $background;
 				</div>
 				@endif
 				@if (!empty($item['title']))
-				<p class="text-h6 mt-4">{{ $item['title'] }}</p>
+				<p class="text-h6 mt-4">{!! $item['title'] !!}</p>
 				@endif
 				@if (!empty($item['text']))
-				<div class="mt-2">{!! $item['text'] !!}</div>
+				<div class="__txt mt-2">{!! $item['text'] !!}</div>
 				@endif
 
 
 				@if (!empty($item['button']))
 				<x-button
 					:href="$item['button']['url']"
+					:target="$item['button']['target'] ?? '_self'"
+					:rel="($item['button']['target'] ?? '') === '_blank' ? 'noopener noreferrer' : null"
 					variant="primary"
 					class="mt-6"
 					data-gsap-element="btn">

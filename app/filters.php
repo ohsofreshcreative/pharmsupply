@@ -7,6 +7,13 @@
 namespace App;
 
 /**
+ * Twarde spacje w tytułach jako znaki Unicode, także dla escapowanych widoków Blade.
+ */
+add_filter('the_title', function ($title) {
+    return str_ireplace(['&nbsp;', '&#160;', '&#xA0;'], "\u{00A0}", $title);
+}, 20);
+
+/**
  * Add "… Continued" to the excerpt.
  *
  * @return string
@@ -127,4 +134,25 @@ add_action('pre_get_posts', function ($q) {
     if (! empty($tax_query)) {
         $q->set('tax_query', $tax_query);
     }
+});
+
+
+
+/*--- CHANGE EDIT SECTION ---*/
+
+
+add_filter('gettext', function ($translated, $text, $domain) {
+    if (
+        is_admin() &&
+        $text === 'Open expanded editor'
+    ) {
+        return 'Edytuj sekcję';
+    }
+
+    return $translated;
+}, 10, 3);
+
+
+add_filter('acf/blocks/default_expanded_editor_button_text', function () {
+    return 'Edytuj sekcję';
 });

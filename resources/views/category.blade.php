@@ -10,6 +10,17 @@ $category_header = get_field('category_header', $term);
 $category_description = get_field('category_description', $term);
 $category_image = get_field('category_image', $term);
 
+$defaultCategoryId = (int) get_option('default_category');
+if ($defaultCategoryId > 0 && $defaultCategoryId !== (int) $term->term_id) {
+	$defaultCategory = 'category_' . $defaultCategoryId;
+	if (trim((string) $category_description) === '') {
+		$category_description = get_field('category_description', $defaultCategory);
+	}
+	if (empty($category_image['url'])) {
+		$category_image = get_field('category_image', $defaultCategory);
+	}
+}
+
 $language = function_exists('pll_current_language') ? pll_current_language('slug') : 'pl';
 $connectsField = $language === 'en' ? 'connects_en' : 'connects';
 $connects = get_field($connectsField, 'option');
@@ -72,9 +83,11 @@ $unique_id = 'clip_'.uniqid();
 				</div>
 			</div>
 		</div>
+		@if (!empty($category_image['url']))
 		<div class="__img relative lg:absolute z-0 bottom-0 right-0 pointer-events-none">
-			<img src="{{ $category_image['url'] }}" alt="{{ $category_image['alt'] }}" class="mask-img" />
+			<img src="{{ $category_image['url'] }}" alt="{{ $category_image['alt'] ?? '' }}" class="mask-img" />
 		</div>
+		@endif
 
 		<img class="absolute z-0 right-20 -bottom-6/12" src="/wp-content/uploads/2026/05/blog-shape.svg" alt="Blog kształt" />
 	</div>

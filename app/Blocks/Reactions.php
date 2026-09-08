@@ -38,7 +38,7 @@ class Reactions extends Block
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_reactions', ['label' => ''])
-			->addText('header', ['label' => 'Nagłówek'])
+			->addTextArea('header', ['label' => 'Nagłówek'])
 			->addWysiwyg('text', [
 				'label' => 'Treść',
 				'tabs' => 'all',
@@ -67,8 +67,11 @@ class Reactions extends Block
 				'return_format' => 'array', // lub 'url', lub 'id'
 				'preview_size' => 'thumbnail',
 			])
-			->addText('title', [
+			->addTextarea('title', [
 				'label' => 'Nagłówek',
+				'rows' => 2,
+				'placeholder' => 'Wpisz opis...',
+				'new_lines' => 'br',
 			])
 			->addWysiwyg('text', [
 				'label' => 'Treść',
