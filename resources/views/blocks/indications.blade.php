@@ -59,7 +59,7 @@ $translate = static fn(string $text): string => function_exists('pll__') ? pll__
 			@if (!empty($products))
 			<div class="space-y-3">
 				@foreach ($products as $product)
-				<article data-gsap-element="card" class="flex flex-col md:flex-row rounded-xl items-start md:items-center gap-4 bg-white b-shadow p-4 lg:px-5 lg:py-3">
+				<article data-gsap-element="stagger" class="flex flex-col md:flex-row rounded-xl items-start md:items-center gap-4 bg-white b-shadow p-4 lg:px-5 lg:py-3">
 
 					@if (!empty($product['thumbnail']))
 					<a href="{{ $product['permalink'] }}" class="block shrink-0">
