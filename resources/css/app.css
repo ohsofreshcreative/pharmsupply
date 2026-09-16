@@ -165,6 +165,7 @@
 @import '../css/blocks/tiles.scss';
 @import '../css/blocks/reachus.scss';
 @import '../css/blocks/reactions.scss';
+@import '../css/blocks/search.scss';
 /*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';
 @import '../css/blocks/category-posts.scss';

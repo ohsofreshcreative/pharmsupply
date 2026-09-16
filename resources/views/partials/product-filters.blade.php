@@ -14,11 +14,11 @@ $qApp = $_GET['product_app'] ?? '';
 @endphp
 
 <form method="get" action="{{ $action }}"
-	class="b-product-filters bg-white rounded-3xl lg:rounded-full b-shadow flex flex-col lg:flex-row items-center gap-2 lg:gap-0 overflow-hidden w-full py-6 lg:py-0 pl-6 pr-4 mx-auto">
+	class="b-product-filters bg-white rounded-3xl lg:rounded-full b-shadow flex flex-col lg:flex-row items-center gap-2 lg:gap-0 overflow-hidden w-full py-6 lg:py-0 pl-4 md:pl-6 pr-4 md:pr-4 mx-auto">
 
 	{{-- Nazwa produktu --}}
-	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
-		<label for="product_s" class="block font-semibold text-xl">
+	<div class="flex-1 px-3 md:px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
+		<label for="product_s" class="block font-semibold text-base md:text-xl">
 			{{ $translate('Nazwa produktu') }}
 		</label>
 		<input type="text" id="product_s" name="product_s"
@@ -28,8 +28,8 @@ $qApp = $_GET['product_app'] ?? '';
 	</div>
 
 	{{-- Rodzaj produktu --}}
-	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
-		<label for="product_cat" class="block font-semibold text-xl">
+	<div class="flex-1 px-3 md:px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0 lg:border-r">
+		<label for="product_cat" class="block font-semibold text-base md:text-xl">
 			{{ $translate('Rodzaj problemu') }}
 		</label>
 		<select id="product_cat" name="product_cat"
@@ -42,8 +42,8 @@ $qApp = $_GET['product_app'] ?? '';
 	</div>
 
 	{{-- Zastosowanie --}}
-	<div class="flex-1 px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0">
-		<label for="product_app" class="block font-semibold text-xl ">
+	<div class="flex-1 px-3 md:px-6 py-3 w-full rounded-xl border border-gray-200 lg:rounded-none lg:border-0">
+		<label for="product_app" class="block font-semibold text-base md:text-xl ">
 			{{ $translate('Obszar terapeutyczny') }}
 		</label>
 		<select id="product_app" name="product_app"

@@ -11,8 +11,7 @@
 
 	<div data-gsap-element="search" class="__wrapper c-main relative">
 
-
-		<div class="__search bg-gradient radius p-10 md:px-20 md:pt-12 md:pb-14">
+		<div class="__search bg-gradient radius p-6 md:px-20 md:pt-12 md:pb-14">
 			<h3 class="text-center text-white">{{ $g_search['header'] ?? '' }}</h3>
 
 			<div class="mt-8">

@@ -60,10 +60,10 @@ $product_terms[$taxonomy] = [
 	</div>
 	@endif
 
-	<div class="__wrapper c-main relative pt-6">
+	<div class="__wrapper c-main relative pt-8">
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20">
 			@if (!empty($g_product['image']))
-			<div data-gsap-element="img" class="__img h-full order1 bg-white">
+			<div data-gsap-element="img" class="__img h-full order1 bg-white radius-img">
 				<img class="object-contain w-full h-full aspect-square __img radius-img border border-primary-light" src="{{ $g_product['image']['url'] }}" alt="{{ $g_product['image']['alt'] ?? '' }}">
 			</div>
 			@endif

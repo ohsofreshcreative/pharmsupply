@@ -95,6 +95,25 @@
 
 
 
+@media (width < 1024px) {
+	.b-content {
+		.__img,
+		.__img.is-flipped {
+			width: min(100%, 360px);
+			height: auto;
+			aspect-ratio: 1;
+			min-width: 0;
+			margin-inline: auto;
+
+			img.mask-img {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1;
+			}
+		}
+	}
+}
+
 /*--- BRAK PUNKTATORÓW ---*/
 
 .b-content.no-list {

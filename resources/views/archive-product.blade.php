@@ -21,7 +21,7 @@ function_exists('pll__') ? pll__($text) : $text;
 	<h2 data-gsap-element="header" class="text-gradient m-header mt-10">
 		{{ $translate('Produkty') }}
 	</h2>
-	<div class="bg-gradient radius px-20 pt-12 pb-14">
+	<div class="bg-gradient radius p-6 md:px-20 md:pt-12 md:pb-14">
 		<h3 class="text-center text-white">
 			{{ $translate('Wyszukiwarka produktów') }}
 		</h3>

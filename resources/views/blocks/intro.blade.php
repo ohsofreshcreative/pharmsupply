@@ -53,7 +53,7 @@
 		<div data-gsap-element="image" class="__img relative z-20 overflow-visible">
 			<img src="{{ $g_intro['image']['url'] }}" alt="{{ $g_intro['image']['alt'] }}"
 				class="mask-img h-[680px] w-full object-cover" />
-			<img src="/wp-content/uploads/2026/05/intro-bg.svg" class="absolute top-8 -left-6 h-[504px] w-[504px] object-cover overflow-visible -z-10" />
+			<img src="/wp-content/uploads/2026/05/intro-bg.svg" class="absolute top-[5%] left-0 h-auto w-3/4 md:top-8 md:-left-6 md:h-[504px] md:w-[504px] object-contain md:object-cover overflow-visible -z-10" />
 		</div>
 	</div>
 

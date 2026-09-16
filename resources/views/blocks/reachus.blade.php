@@ -21,7 +21,7 @@
 				</div>
 			</div>
 
-			<div data-gsap-element="form" class="bg-white radius p-10">
+			<div data-gsap-element="form" class="bg-white radius p-6 md:p-10">
 				<h4 class="!text-primary mb-4">{!! $g_reachus_2['title'] !!}</h4>
 				{!! do_shortcode($g_reachus_2['shortcode']) !!}
 			</div>

@@ -15,9 +15,9 @@
 			@foreach ($r_specification as $item)
 			<div class="tabs rounded-2xl bg-white b-shadow h-max">
 				<input class="tab-check" type="checkbox" name="radio-a" id="check{{ $loop->index }}">
-				<label class="tabs-label flex items-center justify-between" for="check{{ $loop->index }}">
+				<label class="tabs-label flex items-center justify-between gap-4" for="check{{ $loop->index }}">
 					<div class="flex items-center gap-4">
-						<p class="!text-lg font-header">{{ $item['title'] }}</p>
+						<p class="text-sm md:!text-lg font-header">{{ $item['title'] }}</p>
 					</div>
 					<span class="__icon __icon-plus text-white text-2xl leading-none bg-primary h-6 w-6 rounded-full text-center">+</span>
 					<span class="__icon __icon-minus text-white !font-bold text-lg leading-none bg-primary h-6 w-6 rounded-full !text-center">−</span>

@@ -11,7 +11,7 @@ export default defineConfig(({ command, mode }) => {
   return {
     server: {
       host: 'pharmsupply.local',
-      port: 5981,
+      port: 6004,
       strictPort: true,
       cors: true,
       proxy: {
@@ -23,7 +23,7 @@ export default defineConfig(({ command, mode }) => {
       hmr: {
         protocol: 'ws',
         host: 'pharmsupply.local',
-        port: 5981,
+        port: 6004,
       },
     },
 

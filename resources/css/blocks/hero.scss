@@ -16,21 +16,18 @@
 	}
 }
 
-@media (max-width: 768px) {
+@media (width < 768px) {
 	.b-hero {
 		.__img {
-			img.mask-img {
-				scale:1.2;
-			}
-		}
-	}
-}
+			width: min(100%, 420px);
+			min-width: 0;
+			margin-inline: auto;
 
-@media (max-width: 480px) {
-	.b-hero {
-		.__img {
 			img.mask-img {
-				scale:1.5;
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1;
+				scale: 1;
 			}
 		}
 	}
