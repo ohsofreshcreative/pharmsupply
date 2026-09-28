@@ -70,7 +70,7 @@ $hero_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
 				<a data-gsap-element="header" href="{{ get_category_link($category->term_id) }}" class="bg-primary-lighter hover:bg-primary-light border border-primary-light rounded-full text-sm px-4 py-3">{{ $category->name }}</a>
 				@endif
 
-				<h1 data-gsap-element="header" class="text-h2 text-white mt-6">{{ get_the_title() }}</h1>
+				<h1 data-gsap-element="header" class="text-h2 text-white mt-6">{!! get_the_title() !!}</h1>
 
 				@if(has_excerpt())
 				<div data-gsap-element="content" class="text-white mt-4">

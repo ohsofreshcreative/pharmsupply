@@ -1,4 +1,4 @@
-.wysiwyg {
+:is(.wysiwyg, .b-wysiwyg) {
 	.__txt {
 		p {
 			margin-bottom: 16px;
@@ -6,6 +6,37 @@
 
 		p:last-child {
 			margin-bottom: 0 !important;
+		}
+
+		ol {
+			margin-top: 8px;
+			margin-bottom: 24px;
+			padding-left: 24px;
+			list-style-type: decimal;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			li {
+				padding-left: 4px;
+				margin-bottom: 8px;
+				line-height: 2rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			ol {
+				margin-top: 8px;
+				margin-bottom: 8px;
+				list-style-type: lower-alpha;
+
+				ol {
+					list-style-type: lower-roman;
+				}
+			}
 		}
 
 		ul {
