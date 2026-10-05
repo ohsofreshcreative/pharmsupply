@@ -1504,6 +1504,11 @@
           "color": "rgb(var(--p-500))"
         },
         {
+          "name": "Primary (800)",
+          "slug": "primary-800",
+          "color": "rgb(var(--p-800))"
+        },
+        {
           "name": "Secondary",
           "slug": "secondary",
           "color": "rgb(var(--secondary))"
